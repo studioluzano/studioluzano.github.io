@@ -132,12 +132,6 @@ a:hover {
   transform: translateY(-3px);
   opacity: 0.9;
 }
-.project-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  border-color: #c2bfb5;
-  text-decoration: none;
-}
 
 .thumb {
   width: 100%;
