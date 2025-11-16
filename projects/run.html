@@ -45,13 +45,38 @@
       </section>
     </main>
 
+      <!-- Lightbox overlay -->
+    <div id="lightbox" class="lightbox-overlay">
+      <img src="" alt="">
+    </div>
+
     <footer class="site-footer">
       <p>© <span id="year"></span> Studio Luzano. All rights reserved.</p>
     </footer>
   </div>
 
-  <script>
+    <script>
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple lightbox for gallery images
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+        lightbox.classList.add('visible');
+      });
+    });
+
+    // Close on click anywhere on the overlay
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('visible');
+      lightboxImg.src = '';
+    });
   </script>
 </body>
 </html>
