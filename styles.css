@@ -130,12 +130,8 @@ a:hover {
   gap: 10px;
   text-decoration: none;
   transition: transform 0.12s ease, opacity 0.12s ease;
-  border: 1px solid #9EA88F; /* soft moss */
-}
-
-.project-card:hover {
-  transform: translateY(-3px);
-  opacity: 0.9;
+  border: none !important; /* removes the thin line */
+  box-shadow: none;        /* ensures no shadow leftover */
 }
 
 .thumb {
