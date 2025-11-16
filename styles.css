@@ -13,8 +13,8 @@ html, body {
 
 body {
   font-family: "EB Garamond", serif;
-  background-color: #f7f6f4;
-  color: #1b1b1b;
+  background-color: #F4F2EC; /* warm cream */
+  color: #1A1A1A;            /* ink */
   line-height: 1.6;
 }
 
@@ -22,6 +22,7 @@ h1, h2, h3, .site-title, .page-title {
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
   letter-spacing: 0.5px;
+  color: #5E6B54; /* deep moss */
 }
 
 a {
@@ -30,6 +31,7 @@ a {
 }
 
 a:hover {
+  color: #8B775A;           /* warm brown */
   text-decoration: underline;
 }
 
@@ -37,6 +39,7 @@ a:hover {
   max-width: 1100px;
   margin: 0 auto;
   padding: 32px 20px 40px;
+  background-color: #F4F2EC; /* keep consistent with body */
 }
 
 /* Header */
@@ -94,7 +97,7 @@ a:hover {
 }
 
 .main-nav a:hover {
-  border-bottom-color: #111;
+  border-bottom-color: #8B775A; /* warm brown */
 }
 
 /* Featured projects (the 4 boxes) */
@@ -127,6 +130,7 @@ a:hover {
   gap: 10px;
   text-decoration: none;
   transition: transform 0.12s ease, opacity 0.12s ease;
+  border: 1px solid #9EA88F; /* soft moss */
 }
 
 .project-card:hover {
@@ -187,7 +191,7 @@ a:hover {
 }
 
 .social-links a:hover {
-  border-bottom-color: #111;
+  border-bottom-color: #8B775A; /* warm brown */
 }
 
 /* Footer */
@@ -196,10 +200,11 @@ a:hover {
   margin-top: 32px;
   text-align: center;
   font-size: 0.8rem;
-  color: #8a8a8a;
+  color: #5E6B54; /* deep moss */
 }
 
 /* Inner page titles */
+
 .page-title {
   font-size: 1.6rem;
   margin-bottom: 6px;
@@ -213,6 +218,7 @@ a:hover {
 }
 
 /* Back link */
+
 .back-row {
   display: flex;
   justify-content: flex-start;
@@ -226,37 +232,7 @@ a:hover {
 }
 
 .back-link:hover {
-  border-bottom-color: #111;
-}
-
-/* Inner page titles */
-.page-title {
-  font-size: 1.6rem;
-  margin-bottom: 6px;
-}
-
-.page-intro {
-  font-size: 0.95rem;
-  color: #555;
-  max-width: 620px;
-  margin: 0 auto 18px;
-}
-
-/* Back link */
-.back-row {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 8px;
-}
-
-.back-link {
-  font-size: 0.85rem;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.back-link:hover {
-  border-bottom-color: #111;
+  border-bottom-color: #8B775A; /* warm brown */
 }
 
 /* Gallery layout */
@@ -275,53 +251,31 @@ a:hover {
 }
 
 .gallery-item {
-  background: #fff;
+  background: #FFFDFC;          /* slightly warmer white */
   padding: 16px 16px 18px;
-  border: 1px solid #e0ded8;
-  border-radius: 0; /* no rounded corners */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.gallery-item {
-  background: #fff;
-  padding: 16px 16px 18px;
-  border: 1px solid #e0ded8;
+  border: 1px solid #9EA88F;    /* soft moss */
   border-radius: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
-  min-height: 400px;         
-}
-
-.gallery-item {
-  background: #fff;
-  padding: 16px 16px 18px;
-  border: 1px solid #e0ded8;
-  border-radius: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;   /* NEW — centers all content vertically */
-  min-height: 400px;         /* NEW — controls the height of each white square */
+  justify-content: center;
+  min-height: 400px;
 }
 
 .gallery-item img {
   max-width: 90%;
   max-height: 85%;
-  object-fit: contain;        /* NEW — keeps whole image visible */
+  object-fit: contain;
   border-radius: 0;
   cursor: zoom-in;
-  margin: auto;               /* NEW — centers inside flexbox */
+  margin: auto;
 }
 
 .gallery-item figcaption {
   font-size: 0.9rem;
   color: #555;
   margin-top: 10px;
-  text-align: center; /* centered caption */
+  text-align: center;
   max-width: 90%;
 }
 
