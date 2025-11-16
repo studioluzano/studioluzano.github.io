@@ -52,7 +52,7 @@ a:hover {
 .avatar-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 8px;   /* was 16px – tighter gap */
 }
 
 .avatar {
@@ -67,6 +67,7 @@ a:hover {
 .site-title {
   letter-spacing: 0.15em;
   font-size: 1.3rem;
+  margin-top: 4px;      /* pulls the name a bit closer to the avatar */
   margin-bottom: 4px;
 }
 
@@ -195,8 +196,8 @@ a:hover {
 .site-footer {
   margin-top: 32px;
   text-align: center;
-  font-size: 0.8rem;
-  color: #5E6B54; /* deep moss */
+  font-size: 0.75rem;   /* slightly smaller */
+  color: #9EA88F;       /* lighter moss tone */
 }
 
 /* Inner page titles */
