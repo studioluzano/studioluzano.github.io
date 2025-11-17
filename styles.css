@@ -70,9 +70,9 @@ a:hover {
 }
 
 .tagline {
-  font-size: 0.95rem;
-  color: #5a5a5a;
-  margin-bottom: 16px;
+  font-size: 0.88rem;
+  color: #7a8270;  /* slightly lighter moss-grey */
+  margin-bottom: 26px;
 }
 
 /* Navigation */
@@ -109,6 +109,10 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
+}
+
+.project-grid {
+  gap: 28px;
 }
 
 @media (max-width: 900px) {
@@ -163,18 +167,13 @@ a:hover {
   margin-top: 48px;      /* more space above each section */
   margin-bottom: 40px;   /* and below */
 }
-
 .text-section h2 {
-  font-size: 1.15rem;
+  margin-top: 12px;
   margin-bottom: 10px;
-  color: #525a4d;        /* softer heading color */
-  letter-spacing: 0.6px;
 }
 
 .text-section p {
-  margin-bottom: 8px;
-  font-size: 0.97rem;
-  color: #444;
+  line-height: 1.7;
 }
 
 /* Social links */
