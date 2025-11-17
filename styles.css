@@ -46,7 +46,7 @@ a:hover {
 
 .site-header {
   text-align: center;
-  margin-bottom: 40px; /* more breathing room before thumbnails */
+  margin-bottom: 40px;
 }
 
 .avatar-wrapper {
@@ -75,7 +75,7 @@ a:hover {
   margin-bottom: 26px;
 }
 
-/* Navigation */
+/* Navigation (old top nav if you ever use it) */
 
 .main-nav {
   display: flex;
@@ -84,29 +84,6 @@ a:hover {
   font-size: 0.95rem;
   margin-bottom: 24px;
   flex-wrap: wrap;
-}
-
-/* Project links row under name */
-
-.project-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px 24px;
-  margin-bottom: 40px;
-}
-
-.project-nav a {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.06em;
-  text-transform: none;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-}
-
-.project-nav a:hover {
-  border-bottom-color: #8B775A; /* warm brown from your palette */
 }
 
 .main-nav a {
@@ -122,51 +99,83 @@ a:hover {
   border-bottom-color: #8B775A; /* warm brown */
 }
 
-/* Section navigation under name */
+/* SECTION NAVIGATION WITH DROPDOWNS UNDER NAME */
 
 .section-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px 22px;
+  margin-top: 16px;
   margin-bottom: 40px;
 }
 
-.section-nav a {
+.section-nav .menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  position: relative;
   font-family: "Cormorant Garamond", serif;
   font-size: 0.9rem;
   letter-spacing: 0.08em;
-  text-transform: none;
+}
+
+.menu-item > a {
   border-bottom: 1px solid transparent;
   padding-bottom: 2px;
+  text-decoration: none;
 }
 
-.section-nav a:hover {
-  border-bottom-color: #8B775A; /* warm brown */
+.menu-item > a:hover {
+  border-bottom-color: #8B775A;   /* warm brown */
+  text-decoration: none;
 }
 
-/* Project lists inside sections */
+/* Dropdown */
 
-.project-list {
+.dropdown {
   list-style: none;
-  padding: 0;
-  margin: 6px 0 0;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  padding: 8px 14px;
+  background: #F4F2EC;            /* same warm background */
+  border: 1px solid #d9d6cc;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  min-width: 220px;
+  z-index: 100;
 }
 
-.project-list li {
-  margin-bottom: 4px;
+.dropdown li + li {
+  margin-top: 4px;
 }
 
-.project-list a {
+.dropdown a {
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
   border-bottom: 1px solid transparent;
+  text-decoration: none;
 }
 
-.project-list a:hover {
+.dropdown a:hover {
   border-bottom-color: #8B775A;
+  text-decoration: none;
 }
 
+/* Show dropdown on hover (desktop) */
 
-/* Featured projects (the 4 boxes) */
+.menu-item:hover .dropdown {
+  display: block;
+}
+
+/* Featured projects (old grid – safe to keep even if unused) */
 
 .featured-section {
   margin-bottom: 40px;
@@ -175,10 +184,6 @@ a:hover {
 .project-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.project-grid {
   gap: 28px;
 }
 
@@ -210,8 +215,8 @@ a:hover {
   background-size: cover;
   background-position: center;
   background-color: #ddd;
-  border-radius: 0;       /* removes rounding */
-  margin: 0;              /* no extra space */
+  border-radius: 0;
+  margin: 0;
   display: block;
 }
 
@@ -234,6 +239,7 @@ a:hover {
   margin-top: 48px;      /* more space above each section */
   margin-bottom: 40px;   /* and below */
 }
+
 .text-section h2 {
   margin-top: 12px;
   margin-bottom: 10px;
@@ -254,118 +260,4 @@ a:hover {
 
 .social-links a {
   font-size: 0.9rem;
-  border-bottom: 1px solid transparent;
-}
-
-.social-links a:hover {
-  border-bottom-color: #8B775A; /* warm brown */
-}
-
-/* Footer */
-
-.site-footer {
-  margin-top: 60px;       /* more graceful fade-out */
-  font-size: 0.75rem;
-  color: #9ea88f;
-  letter-spacing: 0.3px;
-}
-
-/* Inner page titles */
-
-.page-title {
-  font-size: 1.6rem;
-  margin-bottom: 6px;
-}
-
-.page-intro {
-  font-size: 0.95rem;
-  color: #555;
-  max-width: 620px;
-  margin: 0 auto 18px;
-}
-
-/* Back link */
-
-.back-row {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 8px;
-}
-
-.back-link {
-  font-size: 0.85rem;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.back-link:hover {
-  border-bottom-color: #8B775A; /* warm brown */
-}
-
-/* Gallery layout */
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 24px;
-}
-
-@media (max-width: 700px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-}
-
-.gallery-item {
-  background: #FFFDFC;          /* slightly warmer white */
-  padding: 16px 16px 18px;
-  border: 1px solid #9EA88F;    /* soft moss */
-  border-radius: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 400px;
-}
-
-.gallery-item img {
-  max-width: 90%;
-  max-height: 85%;
-  object-fit: contain;
-  border-radius: 0;
-  cursor: zoom-in;
-  margin: auto;
-}
-
-.gallery-item figcaption {
-  font-size: 0.9rem;
-  color: #555;
-  margin-top: 10px;
-  text-align: center;
-  max-width: 90%;
-}
-
-/* Lightbox overlay */
-
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.lightbox-overlay.visible {
-  display: flex;
-}
-
-.lightbox-overlay img {
-  max-width: 90vw;
-  max-height: 90vh;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  cursor: zoom-out;
-  background: #111;
-}
+  border-bottom: 1px solid transpa
