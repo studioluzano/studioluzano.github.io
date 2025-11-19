@@ -97,7 +97,7 @@ a:hover {
 
 .section-nav {
   margin-top: 0;
-  margin-bottom: 36px;
+  margin-bottom: 22px;     /* nav sits closer to tagline */
 }
 
 .section-nav .menu {
@@ -165,7 +165,8 @@ a:hover {
 ------------------------------ */
 .hero {
   width: 100%;
-  margin-bottom: 40px;
+  margin-top: 8px;         /* tiny breathing space under nav */
+  margin-bottom: 56px;     /* more space before “Contact” */
 }
 
 .hero-slider {
@@ -194,7 +195,7 @@ a:hover {
    TEXT SECTIONS
 ------------------------------ */
 .text-section {
-  margin-top: 48px;
+  margin-top: 52px;        /* a touch more above “Contact” */
   margin-bottom: 40px;
 }
 
