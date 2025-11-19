@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <title>Antonio Luzano – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Illustration by Antonio Luzano." />
+  <meta name="description" content="Illustration and concept art by Antonio Luzano." />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
+
 <body>
   <div class="page">
     <header class="site-header">
-      <!-- Replace avatar.png with your own image later -->
       <div class="avatar-wrapper">
         <img src="images/avatar.png" alt="Portrait of Antonio Luzano" class="avatar">
       </div>
@@ -19,102 +19,68 @@
       <h1 class="site-title">ANTONIO LUZANO</h1>
       <p class="tagline">Illustration · Concept Art</p>
 
+      <!-- Dropdown section navigation -->
+      <nav class="section-nav">
+        <ul class="menu">
+          <!-- Illustration dropdown -->
+          <li class="menu-item has-dropdown">
+            <a href="#">Illustration</a>
+            <ul class="dropdown">
+              <li><a href="projects/run.html">RUN – Graphic Novel</a></li>
+              <li><a href="projects/un-peu-de-toi.html">Un peu de toi</a></li>
+              <li><a href="projects/jackies-drawing.html">Jackie’s Drawing</a></li>
+              <li><a href="projects/everyday-walk.html">Everyday Walk</a></li>
+            </ul>
+          </li>
+
+          <!-- Concept Art dropdown -->
+          <li class="menu-item has-dropdown">
+            <a href="#">Concept Art</a>
+            <ul class="dropdown">
+              <li><a href="projects/visdev-worlds.html">NDA Portfolio</a></li>
+            </ul>
+          </li>
+
+          <!-- Direct links -->
+          <li class="menu-item">
+            <a href="projects/studio-luzano-koulu.html">Studio Luzano Koulu</a>
+          </li>
+          <li class="menu-item">
+            <a href="projects/about.html">About</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-      <!-- Project thumbnails on the home page -->
-      <section id="portfolio" class="featured-section">
-        <div class="project-grid">
-
-          <!-- 1. RUN -->
-          <a class="project-card" href="projects/run.html">
-            <div class="thumb" style="background-image:url('images/run-home-thumb.jpg');"></div>
-            <h2>RUN</h2>
-          </a>
-
-          <!-- 3. Un peu de toi -->
-          <a class="project-card" href="projects/un-peu-de-toi.html">
-            <div class="thumb" style="background-image:url('images/un-peu-de-toi-thumb.jpg');"></div>
-            <h2>Un peu de toi</h2>
-          </a>
-
-          <!-- 4. Everyday Walk -->
-          <a class="project-card" href="projects/everyday-walk.html">
-            <div class="thumb" style="background-image:url('images/everyday-walk-thumb.jpg');"></div>
-            <h2>Everyday Walk</h2>
-          </a>
-
-          <!-- 5. Jackie's Drawing -->
-          <a class="project-card" href="projects/jackies-drawing.html">
-            <div class="thumb" style="background-image:url('images/jackies-drawing-thumb.jpg');"></div>
-            <h2>Jackie's Drawing</h2>
-          </a>
-
-          <!-- 6. I Just Want to be Super -->
-          <a class="project-card" href="projects/moominvalley.html">
-            <div class="thumb" style="background-image:url('images/IJWTBS-thumb.jpg');"></div>
-            <h2>I Just Want to be Super</h2>
-          </a>
-          
-          <!-- 7. Animation Concept Art -->
-          <a class="project-card" href="projects/colour-atmosphere.html">
-            <div class="thumb" style="background-image:url('images/Animation-Concept-Art.jpg');"></div>
-            <h2>Animation Concept Art (password protected)</h2>
-          </a>
-
-          <!-- 8. Personal work -->
-          <a class="project-card" href="projects/personal.html">
-            <div class="thumb" style="background-image:url('images/personal-thumb.jpg');"></div>
-            <h2>Personal work</h2>
-          </a>
-
-          <!-- 9. Studio Luzano Koulu -->
-          <a class="project-card" href="projects/zines-photography.html">
-            <div class="thumb" style="background-image:url('images/studio-luzano-koulu.jpg');"></div>
-            <h2>Studio Luzano Koulu</h2>
-          </a>
-
-        </div>
-      </section>
-
-      <!-- Koulu / classes teaser -->
-      <section id="koulu" class="text-section">
-        <h2>Studio Luzano Koulu · Observation Drawing Basics</h2>
-        <p>
-          I teach beginner-friendly drawing classes in my studio in Kruununhaka, Helsinki.
-We focus on learning to see like an artist, noticing shapes, light, and proportions, in a calm and relaxed environment.
-No experience needed. Just curiosity!
-        </p>
-        <p><strong>Interested?</strong> Send me an email – details below.</p>
-      </section>
-
-      <!-- About -->
-      <section id="about" class="text-section">
-        <h2>About</h2>
-        <p>
-          I’m a Montréal-born concept artist and illustrator now working in Helsinki, with a decade of experience in animation, publishing, and visual storytelling. I’m known for adapting to many styles and bringing ideas to life across TV productions, children’s books, and graphic novels.
-        </p>
-        <p>
-          
-        </p>
+      <!-- Hero image landing section -->
+      <section class="hero">
+        <!-- Replace hero.jpg with your chosen image in /images -->
+        <img src="images/hero.jpg" alt="Selected artwork by Antonio Luzano" class="hero-img">
       </section>
 
       <!-- Contact -->
       <section id="contact" class="text-section">
         <h2>Contact</h2>
         <p>
-          For work, collaborations or class enquiries:
-          <br />
+          For work, collaborations or class enquiries:<br />
           <a href="mailto:antonioluzano@gmail.com">antonioluzano@gmail.com</a>
         </p>
 
         <div class="social-links">
-          <!-- Replace # with your real links -->
-          <a href="instagram.com/studioluzano" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.instagram.com/studioluzano" target="_blank" rel="noopener">Instagram</a>
           <a href="#" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> Antonio Luzano. All rights reserved. Do not copy, save or redistribute without written pwemission. 
+      <p>© <span id="year"></span> Antonio Luzano. All rights reserved. Do not copy, save or redistribute without written permission.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
