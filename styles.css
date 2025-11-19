@@ -66,9 +66,9 @@ a:hover {
 .name-logo {
   display: block;
   margin: 0 auto;
-  max-width: 340px;       /* adjust if you want bigger/smaller */
-  width: 100%;
+  width: 280px;      /* <<< FIXED SIZE */
   height: auto;
+  max-width: 80%;    /* prevents it from ever growing too large */
 }
 
 .tagline {
