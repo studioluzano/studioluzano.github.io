@@ -1,4 +1,6 @@
-/* Basic reset */
+/* ------------------------------
+   BASIC RESET
+------------------------------ */
 *,
 *::before,
 *::after {
@@ -31,26 +33,30 @@ a {
 }
 
 a:hover {
-  color: #8B775A;           /* warm brown */
+  color: #8B775A; /* warm brown */
   text-decoration: underline;
 }
 
+/* ------------------------------
+   PAGE CONTAINER
+------------------------------ */
 .page {
   max-width: 1050px;
   margin: 0 auto;
   padding: 40px 24px 50px;
-  background-color: #F4F2EC; /* keep consistent with body */
+  background-color: #F4F2EC;
 }
 
-/* Header */
-
+/* ------------------------------
+   HEADER
+------------------------------ */
 .site-header {
   text-align: center;
-  margin-bottom: 40px; /* more breathing room before thumbnails */
+  margin-bottom: 40px;
 }
 
 .avatar-wrapper {
-  margin-bottom: 8px; /* closer to name */
+  margin-bottom: 8px;
 }
 
 .avatar {
@@ -65,110 +71,109 @@ a:hover {
 .site-title {
   letter-spacing: 0.15em;
   font-size: 1.3rem;
-  margin-top: 4px;      /* pulls the name a bit closer to the avatar */
+  margin-top: 4px;
   margin-bottom: 4px;
 }
 
 .tagline {
   font-size: 0.88rem;
-  color: #7a8270;  /* slightly lighter moss-grey */
+  color: #7a8270;
   margin-bottom: 26px;
 }
 
-/* Navigation */
+/* ------------------------------
+   DROPDOWN MENU (Janet Rodriguez style)
+------------------------------ */
 
-.main-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 0.95rem;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-.main-nav a {
-  font-family: "Cormorant Garamond", serif;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.78rem;
-  padding-bottom: 4px;
-  border-bottom: 1px solid transparent;
-}
-
-.main-nav a:hover {
-  border-bottom-color: #8B775A; /* warm brown */
-}
-
-/* Featured projects (the 4 boxes) */
-
-.featured-section {
+.section-nav {
+  margin-top: 20px;
   margin-bottom: 40px;
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.project-grid {
-  gap: 28px;
-}
-
-@media (max-width: 900px) {
-  .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.project-card {
+.section-nav .menu {
+  list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-decoration: none;
-  transition: transform 0.12s ease, opacity 0.12s ease;
-  border: none !important; /* removes the thin line */
-  box-shadow: none;        /* ensures no shadow leftover */
+  justify-content: center;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
 }
 
-.thumb {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background-size: cover;
-  background-position: center;
-  background-color: #ddd;
-  border-radius: 0;       /* removes rounding */
-  margin: 0;              /* no extra space */
+.menu-item {
+  position: relative;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.menu-item > a {
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+}
+
+.menu-item > a:hover {
+  border-bottom-color: #8B775A;
+}
+
+/* Dropdown container */
+.dropdown {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #F4F2EC;
+  padding: 10px 16px;
+  border: 1px solid #d7d3c4;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.08);
+  min-width: 220px;
+  z-index: 100;
+}
+
+.dropdown li + li {
+  margin-top: 6px;
+}
+
+.dropdown a {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+}
+
+.dropdown a:hover {
+  border-bottom-color: #8B775A;
+}
+
+/* Show dropdown on hover */
+.menu-item:hover .dropdown {
   display: block;
 }
 
-.project-card h2 {
-  margin-top: 6px;
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: #50584a;    /* softer warm green-grey */
-  letter-spacing: 0.4px;
+/* ------------------------------
+   HERO IMAGE BELOW NAME
+------------------------------ */
+.hero {
+  width: 100%;
+  margin-bottom: 40px;
 }
 
-.project-card p {
-  font-size: 0.85rem;
-  color: #585858;
+.hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
 }
 
-/* Text sections */
-
+/* ------------------------------
+   TEXT SECTIONS
+------------------------------ */
 .text-section {
-  margin-top: 48px;      /* more space above each section */
-  margin-bottom: 40px;   /* and below */
+  margin-top: 48px;
+  margin-bottom: 40px;
 }
+
 .text-section h2 {
-  margin-top: 12px;
   margin-bottom: 10px;
 }
 
@@ -176,12 +181,12 @@ a:hover {
   line-height: 1.7;
 }
 
-/* Social links */
-
+/* ------------------------------
+   SOCIAL LINKS
+------------------------------ */
 .social-links {
   margin-top: 12px;
   display: flex;
-  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -191,52 +196,23 @@ a:hover {
 }
 
 .social-links a:hover {
-  border-bottom-color: #8B775A; /* warm brown */
+  border-bottom-color: #8B775A;
 }
 
-/* Footer */
-
+/* ------------------------------
+   FOOTER
+------------------------------ */
 .site-footer {
-  margin-top: 60px;       /* more graceful fade-out */
+  margin-top: 60px;
   font-size: 0.75rem;
   color: #9ea88f;
   letter-spacing: 0.3px;
+  text-align: center;
 }
 
-/* Inner page titles */
-
-.page-title {
-  font-size: 1.6rem;
-  margin-bottom: 6px;
-}
-
-.page-intro {
-  font-size: 0.95rem;
-  color: #555;
-  max-width: 620px;
-  margin: 0 auto 18px;
-}
-
-/* Back link */
-
-.back-row {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 8px;
-}
-
-.back-link {
-  font-size: 0.85rem;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.back-link:hover {
-  border-bottom-color: #8B775A; /* warm brown */
-}
-
-/* Gallery layout */
-
+/* ------------------------------
+   GALLERY PAGES (for project pages)
+------------------------------ */
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -251,9 +227,9 @@ a:hover {
 }
 
 .gallery-item {
-  background: #FFFDFC;          /* slightly warmer white */
+  background: #FFFDFC;
   padding: 16px 16px 18px;
-  border: 1px solid #9EA88F;    /* soft moss */
+  border: 1px solid #9EA88F;
   border-radius: 0;
   display: flex;
   flex-direction: column;
@@ -266,9 +242,7 @@ a:hover {
   max-width: 90%;
   max-height: 85%;
   object-fit: contain;
-  border-radius: 0;
   cursor: zoom-in;
-  margin: auto;
 }
 
 .gallery-item figcaption {
@@ -279,8 +253,9 @@ a:hover {
   max-width: 90%;
 }
 
-/* Lightbox overlay */
-
+/* ------------------------------
+   LIGHTBOX
+------------------------------ */
 .lightbox-overlay {
   position: fixed;
   inset: 0;
@@ -298,7 +273,6 @@ a:hover {
 .lightbox-overlay img {
   max-width: 90vw;
   max-height: 90vh;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
   cursor: zoom-out;
   background: #111;
 }
