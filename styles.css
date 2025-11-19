@@ -52,33 +52,33 @@ a:hover {
 ------------------------------ */
 .site-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;        /* slightly tighter overall */
 }
 
 .avatar-wrapper {
-  margin-bottom: 10px;
+  margin-bottom: 8px;         /* avatar closer to logo */
 }
 
-/* avatar size fix */
+/* avatar size */
 .avatar {
-  width: 92px;
-  height: 92px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #111;
   background: #fff;
 }
 
-/* h1 wrapper around your hand-drawn logo */
+/* wrapper for the hand-drawn logo */
 .site-title {
-  margin: 0 0 6px;
+  margin: 0 0 4px;            /* small gap under logo */
 }
 
-/* hand-drawn name logo size */
+/* hand-drawn name logo */
 .name-logo {
   display: block;
   margin: 0 auto;
-  max-width: 260px;   /* tweak this number if you want bigger/smaller */
+  max-width: 240px;           /* a bit smaller, more delicate */
   width: 100%;
   height: auto;
 }
@@ -86,9 +86,10 @@ a:hover {
 .tagline {
   font-size: 0.9rem;
   color: #7a8270;
-  margin-top: 4px;
-  margin-bottom: 18px;
+  margin-top: 2px;
+  margin-bottom: 10px;        /* pulls nav closer */
 }
+
 
 /* ------------------------------
    DROPDOWN MENU (Janet-style)
