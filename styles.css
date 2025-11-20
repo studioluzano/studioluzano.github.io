@@ -277,6 +277,10 @@ a:hover {
   gap: 16px;
 }
 
+.run-slide-img {
+  transition: opacity 0.4s ease;
+  opacity: 1;
+}
 
 /* ------------------------------
    SOCIAL LINKS
