@@ -131,21 +131,22 @@ a:hover {
   border-bottom-color: #8B775A;        /* clean single line on hover */
 }
 
-/* Dropdown container */
+/* Dropdown container – sits directly under the menu label */
 .dropdown {
   display: none;
   list-style: none;
   position: absolute;
-  top: 110%;
+  top: 100%;                 /* was 110% – now directly under the link */
   left: 50%;
   transform: translateX(-50%);
   background: #F4F2EC;
-  padding: 10px 16px;
+  padding: 8px 16px 10px;    /* small padding, but no “hover gap” */
   border: 1px solid #d7d3c4;
   box-shadow: 0 10px 18px rgba(0,0,0,0.08);
   min-width: 220px;
   z-index: 100;
 }
+
 
 .dropdown li + li {
   margin-top: 6px;
