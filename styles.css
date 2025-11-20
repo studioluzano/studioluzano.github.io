@@ -788,3 +788,10 @@ a:hover {
   opacity: 1;
 }
 
+/* RUN slider image – smooth fade when changing slides */
+.run-slide-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.25s ease-in-out;
+}
