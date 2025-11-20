@@ -295,6 +295,26 @@ a:hover {
   border-bottom-color: #8B775A;
 }
 
+/* Center the Contact section on homepage */
+#contact {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 40px auto;  /* center + gives a good bottom spacing */
+}
+
+#contact h2 {
+  text-align: center;
+}
+
+#contact p {
+  text-align: center;
+}
+
+#contact .social-links {
+  justify-content: center;
+}
+
+
 /* ------------------------------
    FOOTER
 ------------------------------ */
