@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jackie’s Drawing · Studio Luzano</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Selected illustrations and spreads from the children's book Jackie’s Drawing, illustrated by Antonio Luzano." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="site-header">
+      <a href="../index.html" class="avatar-wrapper">
+        <img src="../images/avatar.png" alt="Portrait of Antonio Luzano" class="avatar">
+      </a>
+
+      <h1 class="site-title">
+        <a href="../index.html">
+          <img src="../images/logo-name.png" alt="Antonio Luzano" class="name-logo">
+        </a>
+      </h1>
+
+      <p class="tagline">Illustrator · Concept Artist</p>
+
+      <nav class="section-nav">
+        <ul class="menu">
+          <li class="menu-item has-dropdown">
+            <a href="#">Illustration</a>
+            <ul class="dropdown">
+              <li><a href="run.html">RUN</a></li>
+              <li><a href="un-peu-de-toi.html">Un peu de toi</a></li>
+              <li><a href="jackies-drawing.html">Jackie’s Drawing</a></li>
+              <li><a href="everyday-walk.html">Everyday Walk</a></li>
+              <li><a href="personal.html">Personal</a></li>
+              <li><a href="pleinair.html">Plein Air</a></li>
+            </ul>
+          </li>
+
+          <li class="menu-item has-dropdown">
+            <a href="#">Concept Art</a>
+            <ul class="dropdown">
+              <li><a href="concept-art.html">NDA Portfolio</a></li>
+            </ul>
+          </li>
+
+          <li class="menu-item">
+            <a href="studio-luzano-koulu.html">Studio Luzano Koulu</a>
+          </li>
+
+          <li class="menu-item">
+            <a href="about.html">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <section class="project-intro">
+        <h1 class="page-title">Jackie’s Drawing</h1>
+        <p class="page-intro">
+          A selection of illustrations and spreads from <em>Jackie’s Drawing</em>, a children’s picture book
+          about creativity, imagination and the emotions behind making art.
+        </p>
+      </section>
+
+      <!-- SLIDER -->
+      <section class="run-slider">
+        <div class="run-frame">
+          <button class="run-arrow run-prev" aria-label="Previous image">‹</button>
+
+          <img
+            id="run-slide-img"
+            class="run-slide-img"
+            src="../images/jackies-drawing-01.jpg"
+            alt="Jackie’s Drawing illustration 01"
+          >
+
+          <button class="run-arrow run-next" aria-label="Next image">›</button>
+        </div>
+
+        <p id="run-slide-caption" class="run-caption">
+          A moment from the story — exploring creativity and emotion.
+        </p>
+      </section>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox-overlay">
+      <button class="lightbox-arrow lightbox-prev" aria-label="Previous image">‹</button>
+      <img src="" alt="">
+      <button class="lightbox-arrow lightbox-next" aria-label="Next image">›</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Studio Luzano. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- JACKIE’S SLIDES (9 images) ---
+    const runSlides = [
+      { src: '../images/jackies-drawing-01.jpg', alt: 'Jackie’s Drawing 01', caption: 'A quiet imaginative moment.' },
+      { src: '../images/jackies-drawing-02.jpg', alt: 'Jackie’s Drawing 02', caption: 'Exploring colour and expressive marks.' },
+      { src: '../images/jackies-drawing-03.jpg', alt: 'Jackie’s Drawing 03', caption: 'A story beat focused on emotion.' },
+      { src: '../images/jackies-drawing-04.jpg', alt: 'Jackie’s Drawing 04', caption: 'Warm tones and gentle atmosphere.' },
+      { src: '../images/jackies-drawing-05.jpg', alt: 'Jackie’s Drawing 05', caption: 'Energetic imaginative play.' },
+      { src: '../images/jackies-drawing-06.jpg', alt: 'Jackie’s Drawing 06', caption: 'Balancing character and environment.' },
+      { src: '../images/jackies-drawing-07.jpg', alt: 'Jackie’s Drawing 07', caption: 'A tender emotional moment.' },
+      { src: '../images/jackies-drawing-08.jpg', alt: 'Jackie’s Drawing 08', caption: 'Shape language and clarity.' },
+      { src: '../images/jackies-drawing-09.jpg', alt: 'Jackie’s Drawing 09', caption: 'Atmospheric closing beat.' }
+    ];
+
+    const runImg      = document.getElementById('run-slide-img');
+    const runCaption  = document.getElementById('run-slide-caption');
+    const prevBtn     = document.querySelector('.run-prev');
+    const nextBtn     = document.querySelector('.run-next');
+
+    const lightbox    = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
+
+    let runIndex = 0;
+
+    function showRunSlide(index) {
+      if (index < 0) index = runSlides.length - 1;
+      if (index >= runSlides.length) index = 0;
+
+      runIndex = index;
+      const slide = runSlides[index];
+
+      runImg.style.opacity = 0;
+
+      setTimeout(() => {
+        runImg.src = slide.src;
+        runImg.alt = slide.alt;
+        runCaption.textContent = slide.caption;
+        runImg.style.opacity = 1;
+
+        if (lightbox.classList.contains('visible')) {
+          lightboxImg.src = slide.src;
+          lightboxImg.alt = slide.alt;
+        }
+      }, 200);
+    }
+
+    prevBtn.addEventListener('click', () => showRunSlide(runIndex - 1));
+    nextBtn.addEventListener('click', () => showRunSlide(runIndex + 1));
+
+    showRunSlide(0);
+
+    // Lightbox
+    runImg.addEventListener('click', () => {
+      const slide = runSlides[runIndex];
+      lightboxImg.src = slide.src;
+      lightboxImg.alt = slide.alt;
+      lightbox.classList.add('visible');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('visible');
+        lightboxImg.src = '';
+      }
+    });
+
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showRunSlide(runIndex - 1);
+    });
+
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showRunSlide(runIndex + 1);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') showRunSlide(runIndex - 1);
+      else if (e.key === 'ArrowRight') showRunSlide(runIndex + 1);
+      else if (e.key === 'Escape') {
+        lightbox.classList.remove('visible');
+        lightboxImg.src = '';
+      }
+    });
+  </script>
+</body>
+</html>
