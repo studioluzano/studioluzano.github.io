@@ -406,6 +406,35 @@ a:hover {
   margin-right: auto;
 }
 
+/* --- Move project arrows fully outside the frame --- */
+.run-frame {
+  position: relative;
+  overflow: visible;                /* allow arrows to sit outside */
+}
+
+/* per-slider variables so you can tweak per page if needed */
+.run-slider {
+  --arrow-size: 40px;               /* visual size of the button */
+  --arrow-gap: 14px;                /* extra space outside the frame */
+}
+
+.run-arrow {
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  line-height: 1;                   /* cleaner centering of the glyph */
+}
+
+/* push completely outside the black frame */
+.run-prev { left: calc(-1 * (var(--arrow-size) + var(--arrow-gap))); }
+.run-next { right: calc(-1 * (var(--arrow-size) + var(--arrow-gap))); }
+
+/* Mobile: pull them closer & shrink a bit */
+@media (max-width: 700px) {
+  .run-slider {
+    --arrow-size: 34px;
+    --arrow-gap: 8px;
+  }
+}
 /* ------------------------------
    LIGHTBOX
 ------------------------------ */
