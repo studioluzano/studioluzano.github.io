@@ -2,33 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Animation Concept Art – NDA Portfolio</title>
+  <title>Concept Art Portfolio (Password Protected) · Studio Luzano</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Password-protected animation concept art portfolio by Antonio Luzano." />
-  <!-- Keep this section out of search results -->
+  <meta name="description" content="Password-protected concept art portfolio by Antonio Luzano: environments, character design, color keys, keyframes." />
+  <!-- Keep this page out of search results -->
   <meta name="robots" content="noindex, nofollow" />
+
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=concept" />
+  <link rel="stylesheet" href="../styles.css?v=concept-grids" />
+
   <style>
-    /* Local safety net so the lock always works even if styles.css changes */
+    /* Local helpers so you don't have to touch styles.css */
     .hidden { display: none !important; }
-    /* Light deterrents (still screenshot-able) */
-    #protected-content img {
-      -webkit-user-drag: none;
-      user-select: none;
+    .portfolio-section { margin: 28px 0 8px; }
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #7a8270;
+      margin: 24px 0 14px;
     }
+    /* Grid helpers */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
+    @media (max-width: 820px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+    /* Light deterrents (still screenshot-able) */
+    #protected-content img { -webkit-user-drag: none; user-select: none; }
   </style>
 </head>
 
 <body>
   <div class="page">
-
+    <!-- HEADER -->
     <header class="site-header">
-      <div class="avatar-wrapper">
-        <a href="../index.html">
-          <img src="../images/avatar.png" alt="Portrait of Antonio Luzano" class="avatar">
-        </a>
-      </div>
+      <a href="../index.html" class="avatar-wrapper">
+        <img src="../images/avatar.png" alt="Portrait of Antonio Luzano" class="avatar">
+      </a>
 
       <h1 class="site-title">
         <a href="../index.html">
@@ -44,10 +57,11 @@
             <a href="#">Illustration</a>
             <ul class="dropdown">
               <li><a href="run.html">RUN</a></li>
+              <li><a href="un-peu-de-toi.html">Un peu de toi</a></li>
               <li><a href="jackies-drawing.html">Jackie’s Drawing</a></li>
               <li><a href="everyday-walk.html">Everyday Walk</a></li>
-              <li><a href="pleinair.html">Plein Air</a></li>
               <li><a href="personal.html">Personal</a></li>
+              <li><a href="pleinair.html">Plein Air</a></li>
             </ul>
           </li>
 
@@ -69,13 +83,14 @@
       </nav>
     </header>
 
+    <!-- MAIN -->
     <main>
+      <!-- Intro + password gate -->
       <section class="text-section">
-        <h2 class="page-title">Animation Concept Art · NDA Portfolio</h2>
+        <h2 class="page-title">Concept Art Portfolio (Password Protected)</h2>
         <p class="page-intro">
-          This section contains production concept art that is not publicly available.
-          Access is limited to recruiters and partners with the password. If you’d like to
-          view this work, please <a href="mailto:antonioluzano@gmail.com">email me</a> for access.
+          A sectioned selection of production concept art — environments, character design, color keys and keyframes.
+          Access is intended for recruiters and production partners.
         </p>
 
         <!-- Password box -->
@@ -90,9 +105,7 @@
               inputmode="text"
             />
             <button type="submit">Enter</button>
-            <p class="password-hint">
-              Need the password? Contact me directly.
-            </p>
+            <p class="password-hint">Need the password? <a href="mailto:antonioluzano@gmail.com">Email me</a>.</p>
             <p id="password-error" class="password-error hidden" aria-live="polite">
               Incorrect password. Please try again.
             </p>
@@ -101,30 +114,109 @@
 
         <!-- Protected content -->
         <div id="protected-content" class="hidden" oncontextmenu="return false;">
-          <p class="page-intro">
-            Thank you. Below is a small selection of NDA-protected concept art.
-            Please do not share or redistribute.
-          </p>
+          <hr class="soft-divider" />
 
-          <section class="gallery">
-            <figure class="gallery-item">
-              <img src="../images/concept-1.jpg" alt="Keyframe concept art">
-              <figcaption>Keyframe concept exploring mood and lighting.</figcaption>
-            </figure>
+          <!-- ENVIRONMENTS -->
+          <section class="portfolio-section">
+            <h2 class="section-title">Environment Design</h2>
+            <div class="grid-2">
+              <!-- Replace src paths with your files -->
+              <figure class="gallery-item">
+                <img src="../images/env-01.jpg" alt="Background design – lighthouse bedroom">
+                <figcaption>Background design — Lighthouse bedroom (keys + prop callouts available on request).</figcaption>
+              </figure>
 
-            <figure class="gallery-item">
-              <img src="../images/concept-2.jpg" alt="Environment concept art">
-              <figcaption>Environment design with colour story and atmosphere.</figcaption>
-            </figure>
+              <figure class="gallery-item">
+                <img src="../images/env-02.jpg" alt="Exterior environment design">
+                <figcaption>Exterior environment — lakeside path, late afternoon light study.</figcaption>
+              </figure>
 
-            <figure class="gallery-item">
-              <img src="../images/concept-3.jpg" alt="Prop / vehicle concept art">
-              <figcaption>Shape language exploration for props / vehicles.</figcaption>
-            </figure>
+              <figure class="gallery-item">
+                <img src="../images/env-03.jpg" alt="Interior environment key">
+                <figcaption>Interior environment key — observatory workspace (layout + scale line).</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="../images/env-04.jpg" alt="Town street environment">
+                <figcaption>Town street — mood pass and signage exploration.</figcaption>
+              </figure>
+            </div>
           </section>
+
+          <!-- CHARACTERS -->
+          <section class="portfolio-section">
+            <h2 class="section-title">Character Design</h2>
+            <div class="grid-3">
+              <figure class="gallery-item">
+                <img src="../images/char-01.jpg" alt="Character exploration sheet">
+                <figcaption>Exploration sheet — silhouettes, proportions and attitude.</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="../images/char-02.jpg" alt="Character expressions">
+                <figcaption>Expressions — mouth shapes and eye language for dialogue beats.</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="../images/char-03.jpg" alt="Costume variations">
+                <figcaption>Costume variations — shape rhythm and texture notes.</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <!-- COLOR / KEYFRAMES -->
+          <section class="portfolio-section">
+            <h2 class="section-title">Color Keys & Keyframes</h2>
+            <div class="grid-2">
+              <figure class="gallery-item">
+                <img src="../images/color-01.jpg" alt="Color key sequence">
+                <figcaption>Color key sequence — time of day and value structure for pacing.</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="../images/keyframe-01.jpg" alt="Keyframe illustration">
+                <figcaption>Keyframe — story beat framing and energy lines.</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="../images/color-02.jpg" alt="Palette exploration">
+                <figcaption>Palette exploration — limited warm/cool sets for scene cohesion.</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="../images/keyframe-02.jpg" alt="Action keyframe">
+                <figcaption>Action keyframe — camera angle and motion blur notes.</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <!-- OPTIONAL: PROPS / CALLSHEETS -->
+          <section class="portfolio-section">
+            <h2 class="section-title">Props & Callouts</h2>
+            <div class="grid-3">
+              <figure class="gallery-item">
+                <img src="../images/prop-01.jpg" alt="Prop sheet">
+                <figcaption>Prop sheet — orthographic views + material notes.</figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="../images/prop-02.jpg" alt="Prop variations">
+                <figcaption>Prop variations — readability at scale.</figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img src="../images/board-01.jpg" alt="Beat board / callouts">
+                <figcaption>Beat board — callouts and placement plan.</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <hr class="soft-divider" />
+          <p class="page-intro" style="text-align:center;">
+            More work available on request. Please do not share or redistribute.
+          </p>
         </div>
       </section>
 
+      <!-- Contact -->
       <section class="text-section">
         <h2>Contact</h2>
         <p>
@@ -143,8 +235,8 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Obfuscated (Base64) password string — change "blueforest" to your own
-    // Generate a new one at https://www.base64encode.org/
+    // Obfuscated password: change "blueforest" to your own and re-encode
+    // Create a new Base64 at https://www.base64encode.org/
     const CORRECT_PASSWORD = atob("Ymx1ZWZvcmVzdA=="); // "blueforest"
 
     const form = document.getElementById('password-form');
@@ -161,7 +253,6 @@
         box.style.display = 'none';
         protectedContent.classList.remove('hidden');
         error.classList.add('hidden');
-        // Optional: clear the input so it isn't left in the DOM
         input.value = "";
       } else {
         error.classList.remove('hidden');
