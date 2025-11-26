@@ -4,33 +4,34 @@
   <meta charset="UTF-8" />
   <title>Shop · Studio Luzano</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Prints and zines by Antonio Luzano." />
+  <meta name="description" content="Small-batch prints, zines, and originals by Antonio Luzano." />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=shop1" />
+  <link rel="stylesheet" href="../styles.css?v=shop-email" />
   <style>
-    /* lightweight helpers that match your palette */
-    .shop-intro { max-width: 720px; margin: 0 auto 24px; text-align: center; }
-    .shop-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
-    @media (max-width: 800px){ .shop-grid{ grid-template-columns: 1fr; } }
-    .product {
-      background:#FFFDFC; border:1px solid #d7d3c4; padding:14px; display:flex; flex-direction:column; gap:10px;
-    }
-    .product img{ width:100%; height:auto; display:block; }
-    .product h3{ font-size:1.05rem; margin:2px 0; }
-    .meta{ font-size:0.9rem; color:#555; }
-    .price{ font-weight:600; }
-    .buy-row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    .btn {
-      display:inline-block; padding:8px 12px; border:1px solid #9EA88F; background:#F4F2EC; text-decoration:none;
-      border-radius:6px; transition:.2s; font-size:.95rem;
-    }
-    .btn:hover{ background:#1A1A1A; color:#F4F2EC; border-color:#1A1A1A; }
-    .policy { max-width:760px; margin:32px auto 0; font-size:.92rem; color:#555; }
+    /* Lightweight helpers that match your palette */
+    .shop-intro { max-width: 760px; margin: 0 auto 22px; text-align: center; }
+    .email-cta { display:inline-flex; gap:10px; align-items:center; margin-top:8px; }
+    .copy { font-size:.9rem; padding:6px 10px; border:1px solid #9EA88F; background:#F4F2EC; border-radius:6px; cursor:pointer; }
+    .copy:hover { background:#1A1A1A; color:#F4F2EC; border-color:#1A1A1A; }
+    .shop-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+    @media (max-width: 800px){ .shop-grid{ grid-template-columns:1fr; } }
+    .product { background:#FFFDFC; border:1px solid #d7d3c4; padding:14px; display:flex; flex-direction:column; gap:10px; }
+    .product img { width:100%; height:auto; display:block; }
+    .product h3 { font-size:1.05rem; margin:2px 0; }
+    .meta { font-size:.92rem; color:#555; }
+    .price { font-weight:600; }
+    .buy-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .btn { display:inline-block; padding:8px 12px; border:1px solid #9EA88F; background:#F4F2EC; text-decoration:none; border-radius:6px; transition:.2s; font-size:.95rem; }
+    .btn:hover { background:#1A1A1A; color:#F4F2EC; border-color:#1A1A1A; }
     .muted { color:#777; font-size:.9rem; }
+    .policy { max-width:760px; margin:32px auto 0; font-size:.92rem; color:#555; }
+    .small { font-size:.85rem; }
+    .ok { color:#5E6B54; }
   </style>
 </head>
 <body>
   <div class="page">
+    <!-- Header -->
     <header class="site-header">
       <a href="../index.html" class="avatar-wrapper">
         <img src="../images/avatar.png" alt="Portrait of Antonio Luzano" class="avatar">
@@ -66,13 +67,21 @@
       </nav>
     </header>
 
+    <!-- Main -->
     <main>
       <section class="project-intro shop-intro">
         <h1 class="page-title">Shop</h1>
         <p class="page-intro">
-          Small-batch prints and zines. Prices include VAT; shipping is added at checkout.  
-          To order, click **Email to buy**—I’ll confirm stock, shipping, and send a payment link or invoice.
+          Small-batch prints, zines and originals. Prices include VAT; shipping is added at checkout.
+          <br>To purchase, send me an email with the <em>product name</em> and your <em>country</em>.
         </p>
+
+        <div class="email-cta">
+          <strong>Order email:</strong>
+          <span id="orderEmail">antonioluzano@gmail.com</span>
+          <button class="copy" data-copy="antonioluzano@gmail.com">Copy email</button>
+        </div>
+        <p class="small muted" style="margin-top:6px;">You’ll receive a reply confirming stock, shipping, and a payment link (Stripe/transfer).</p>
       </section>
 
       <section class="shop-grid">
@@ -80,15 +89,10 @@
         <article class="product">
           <img src="../images/shop-fish-in-the-city.jpg" alt="Fish in the City – photography zine cover">
           <h3>Fish in the City — Zine</h3>
-          <p class="meta">
-            64 pages, 14 × 21 cm, color, perfect bound. Printed in small batches.
-          </p>
+          <p class="meta">64 pages, 14 × 21 cm, colour, perfect bound. Printed in small batches.</p>
           <p class="price">€18.00 <span class="muted">(incl. VAT)</span></p>
           <div class="buy-row">
-            <a class="btn"
-               href="mailto:antonioluzano@gmail.com?subject=Order:%20Fish%20in%20the%20City%20zine&body=Hello%20Antonio%2C%0A%0AI%27d%20like%20to%20order%3A%0A%0AProduct%3A%20Fish%20in%20the%20City%20%E2%80%94%20Zine%0AQty%3A%201%0AShipping%20country%3A%20%0AAddress%3A%20%0APreferred%20payment%3A%20(Stripe%20link%20%2F%20bank%20transfer%20%2F%20PayPal)%0A%0AThank%20you!">
-              Email to buy
-            </a>
+            <button class="btn copy" data-copy="Fish in the City — Zine">Copy product name</button>
             <span class="muted">Ships from Helsinki</span>
           </div>
         </article>
@@ -96,14 +100,11 @@
         <!-- PRODUCT 2 -->
         <article class="product">
           <img src="../images/shop-print-lake.jpg" alt="Lake Study – art print">
-          <h3>Lake Study — Giclée Print</h3>
+          <h3>Lake Study — Giclée Print (A4)</h3>
           <p class="meta">A4 (21×29.7 cm), archival matte paper. Signed.</p>
           <p class="price">€35.00 <span class="muted">(incl. VAT)</span></p>
           <div class="buy-row">
-            <a class="btn"
-               href="mailto:antonioluzano@gmail.com?subject=Order:%20Lake%20Study%20print%20(A4)&body=Hello%20Antonio%2C%0A%0AI%27d%20like%20to%20order%3A%0A%0AProduct%3A%20Lake%20Study%20%E2%80%94%20Gicl%C3%A9e%20Print%20(A4)%0AQty%3A%201%0AShipping%20country%3A%20%0AAddress%3A%20%0APreferred%20payment%3A%20(Stripe%20link%20%2F%20bank%20transfer%20%2F%20PayPal)%0A%0AThank%20you!">
-              Email to buy
-            </a>
+            <button class="btn copy" data-copy="Lake Study — Giclée Print (A4)">Copy product name</button>
             <span class="muted">Limited run</span>
           </div>
         </article>
@@ -115,10 +116,7 @@
           <p class="meta">Gouache on paper, 13 × 18 cm. Framing not included.</p>
           <p class="price">€120.00 <span class="muted">(incl. VAT)</span></p>
           <div class="buy-row">
-            <a class="btn"
-               href="mailto:antonioluzano@gmail.com?subject=Order:%20Original%20%E2%80%94%20Small%20Painting&body=Hello%20Antonio%2C%0A%0AI%27d%20like%20to%20order%3A%0A%0AProduct%3A%20Original%20%E2%80%94%20Small%20Painting%0AQty%3A%201%0AShipping%20country%3A%20%0AAddress%3A%20%0APreferred%20payment%3A%20(Stripe%20link%20%2F%20bank%20transfer%20%2F%20PayPal)%0A%0AThank%20you!">
-              Email to buy
-            </a>
+            <button class="btn copy" data-copy="Original — Small Painting">Copy product name</button>
             <span class="muted">One of a kind</span>
           </div>
         </article>
@@ -130,20 +128,16 @@
           <p class="meta">Offset-printed postcards, assorted designs.</p>
           <p class="price">€12.00 <span class="muted">(incl. VAT)</span></p>
           <div class="buy-row">
-            <a class="btn"
-               href="mailto:antonioluzano@gmail.com?subject=Order:%20Postcard%20Pack%20(6)&body=Hello%20Antonio%2C%0A%0AI%27d%20like%20to%20order%3A%0A%0AProduct%3A%20Postcard%20Pack%20(6)%0AQty%3A%201%0AShipping%20country%3A%20%0AAddress%3A%20%0APreferred%20payment%3A%20(Stripe%20link%20%2F%20bank%20transfer%20%2F%20PayPal)%0A%0AThank%20you!">
-              Email to buy
-            </a>
+            <button class="btn copy" data-copy="Postcard Pack (6)">Copy product name</button>
           </div>
         </article>
       </section>
 
       <section class="policy">
-        <p><strong>Shipping.</strong> Orders ship from Helsinki, Finland. I’ll confirm postage at checkout (EU & international).</p>
+        <p><strong>How to order:</strong> Email <code>antonioluzano@gmail.com</code> with the product name, quantity and shipping country. I’ll confirm total and send a payment link or invoice.</p>
+        <p><strong>Shipping.</strong> Orders ship from Helsinki, Finland. EU & international available.</p>
         <p><strong>Returns.</strong> 14-day right of withdrawal for non-custom items; buyer pays return postage. Originals and custom orders are non-returnable unless damaged in transit.</p>
-        <p class="muted">
-          Studio Luzano (toiminimi) · Y-tunnus: _____ · Helsinki, Finland · <a href="mailto:antonioluzano@gmail.com">antonioluzano@gmail.com</a>
-        </p>
+        <p class="muted">Studio Luzano (toiminimi) · Y-tunnus: ____ · Helsinki, Finland · antonioluzano@gmail.com</p>
       </section>
     </main>
 
@@ -153,7 +147,21 @@
   </div>
 
   <script>
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Copy-to-clipboard for email and product names
+    function copyText(text, btn){
+      navigator.clipboard.writeText(text).then(() => {
+        const old = btn.textContent;
+        btn.textContent = "Copied!";
+        btn.classList.add("ok");
+        setTimeout(()=>{ btn.textContent = old; btn.classList.remove("ok"); }, 1200);
+      });
+    }
+    document.querySelectorAll(".copy").forEach(btn => {
+      btn.addEventListener("click", () => copyText(btn.dataset.copy, btn));
+    });
   </script>
 </body>
 </html>
