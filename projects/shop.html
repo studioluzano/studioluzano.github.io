@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shop · Studio Luzano</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Prints and zines by Antonio Luzano." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=shop1" />
+  <style>
+    /* lightweight helpers that match your palette */
+    .shop-intro { max-width: 720px; margin: 0 auto 24px; text-align: center; }
+    .shop-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+    @media (max-width: 800px){ .shop-grid{ grid-template-columns: 1fr; } }
+    .product {
+      background:#FFFDFC; border:1px solid #d7d3c4; padding:14px; display:flex; flex-direction:column; gap:10px;
+    }
+    .product img{ width:100%; height:auto; display:block; }
+    .product h3{ font-size:1.05rem; margin:2px 0; }
+    .meta{ font-size:0.9rem; color:#555; }
+    .price{ font-weight:600; }
+    .buy-row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .btn {
+      display:inline-block; padding:8px 12px; border:1px solid #9EA88F; background:#F4F2EC; text-decoration:none;
+      border-radius:6px; transition:.2s; font-size:.95rem;
+    }
+    .btn:hover{ background:#1A1A1A; color:#F4F2EC; border-color:#1A1A1A; }
+    .policy { max-width:760px; margin:32px auto 0; font-size:.92rem; color:#555; }
+    .muted { color:#777; font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <a href="../index.html" class="avatar-wrapper">
+        <img src="../images/avatar.png" alt="Portrait of Antonio Luzano" class="avatar">
+      </a>
+      <h1 class="site-title">
+        <a href="../index.html"><img src="../images/logo-name.png" alt="Antonio Luzano" class="name-logo"></a>
+      </h1>
+      <p class="tagline">Illustrator · Concept Artist</p>
+
+      <nav class="section-nav">
+        <ul class="menu">
+          <li class="menu-item has-dropdown">
+            <a href="#">Illustration</a>
+            <ul class="dropdown">
+              <li><a href="run.html">RUN</a></li>
+              <li><a href="un-peu-de-toi.html">Un peu de toi</a></li>
+              <li><a href="jackies-drawing.html">Jackie’s Drawing</a></li>
+              <li><a href="everyday-walk.html">Everyday Walk</a></li>
+              <li><a href="personal.html">Personal</a></li>
+              <li><a href="pleinair.html">Plein Air</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-dropdown">
+            <a href="#">Animation</a>
+            <ul class="dropdown">
+              <li><a href="concept-art.html">Concept Art Portfolio (password protected)</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="studio-luzano-koulu.html">Private lessons</a></li>
+          <li class="menu-item"><a href="shop.html">Shop</a></li>
+          <li class="menu-item"><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="project-intro shop-intro">
+        <h1 class="page-title">Shop</h1>
+        <p class="page-intro">
+          Small-batch prints and zines. Prices include VAT; shipping is added at checkout.  
+          To order, click **Email to buy**—I’ll confirm stock, shipping, and send a payment link or invoice.
+        </p>
+      </section>
+
+      <section class="shop-grid">
+        <!-- PRODUCT 1 -->
+        <article class="product">
+          <img src="../images/shop-fish-in-the-city.jpg" alt="Fish in the City – photography zine cover">
+          <h3>Fish in the City — Zine</h3>
+          <p class="meta">
+            64 pages, 14 × 21 cm, color, perfect bound. Printed in small batches.
+          </p>
+          <p class="price">€18.00 <span class="muted">(incl. VAT)</span></p>
+          <div class="buy-row">
+            <a class="btn"
+               href="mailto:antonioluzano@gmail.com?subject=Order:%20Fish%20in%20the%20City%20zine&body=Hello%20Antonio%2C%0A%0AI%27d%20like%20to%20order%3A%0A%0AProduct%3A%20Fish%20in%20the%20City%20%E2%80%94%20Zine%0AQty%3A%201%0AShipping%20country%3A%20%0AAddress%3A%20%0APreferred%20payment%3A%20(Stripe%20link%20%2F%20bank%20transfer%20%2F%20PayPal)%0A%0AThank%20you!">
+              Email to buy
+            </a>
+            <span class="muted">Ships from Helsinki</span>
+          </div>
+        </article>
+
+        <!-- PRODUCT 2 -->
+        <article class="product">
+          <img src="../images/shop-print-lake.jpg" alt="Lake Study – art print">
+          <h3>Lake Study — Giclée Print</h3>
+          <p class="meta">A4 (21×29.7 cm), archival matte paper. Signed.</p>
+          <p class="price">€35.00 <span class="muted">(incl. VAT)</span></p>
+          <div class="buy-row">
+            <a class="btn"
+               href="mailto:antonioluzano@gmail.com?subject=Order:%20Lake%20Study%20print%20(A4)&body=Hello%20Antonio%2C%0A%0AI%27d%20like%20to%20order%3A%0A%0AProduct%3A%20Lake%20Study%20%E2%80%94%20Gicl%C3%A9e%20Print%20(A4)%0AQty%3A%201%0AShipping%20country%3A%20%0AAddress%3A%20%0APreferred%20payment%3A%20(Stripe%20link%20%2F%20bank%20transfer%20%2F%20PayPal)%0A%0AThank%20you!">
+              Email to buy
+            </a>
+            <span class="muted">Limited run</span>
+          </div>
+        </article>
+
+        <!-- PRODUCT 3 -->
+        <article class="product">
+          <img src="../images/shop-original-small.jpg" alt="Small original painting">
+          <h3>Original — Small Painting</h3>
+          <p class="meta">Gouache on paper, 13 × 18 cm. Framing not included.</p>
+          <p class="price">€120.00 <span class="muted">(incl. VAT)</span></p>
+          <div class="buy-row">
+            <a class="btn"
+               href="mailto:antonioluzano@gmail.com?subject=Order:%20Original%20%E2%80%94%20Small%20Painting&body=Hello%20Antonio%2C%0A%0AI%27d%20like%20to%20order%3A%0A%0AProduct%3A%20Original%20%E2%80%94%20Small%20Painting%0AQty%3A%201%0AShipping%20country%3A%20%0AAddress%3A%20%0APreferred%20payment%3A%20(Stripe%20link%20%2F%20bank%20transfer%20%2F%20PayPal)%0A%0AThank%20you!">
+              Email to buy
+            </a>
+            <span class="muted">One of a kind</span>
+          </div>
+        </article>
+
+        <!-- PRODUCT 4 -->
+        <article class="product">
+          <img src="../images/shop-postcard-pack.jpg" alt="Postcard pack">
+          <h3>Postcard Pack (6)</h3>
+          <p class="meta">Offset-printed postcards, assorted designs.</p>
+          <p class="price">€12.00 <span class="muted">(incl. VAT)</span></p>
+          <div class="buy-row">
+            <a class="btn"
+               href="mailto:antonioluzano@gmail.com?subject=Order:%20Postcard%20Pack%20(6)&body=Hello%20Antonio%2C%0A%0AI%27d%20like%20to%20order%3A%0A%0AProduct%3A%20Postcard%20Pack%20(6)%0AQty%3A%201%0AShipping%20country%3A%20%0AAddress%3A%20%0APreferred%20payment%3A%20(Stripe%20link%20%2F%20bank%20transfer%20%2F%20PayPal)%0A%0AThank%20you!">
+              Email to buy
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section class="policy">
+        <p><strong>Shipping.</strong> Orders ship from Helsinki, Finland. I’ll confirm postage at checkout (EU & international).</p>
+        <p><strong>Returns.</strong> 14-day right of withdrawal for non-custom items; buyer pays return postage. Originals and custom orders are non-returnable unless damaged in transit.</p>
+        <p class="muted">
+          Studio Luzano (toiminimi) · Y-tunnus: _____ · Helsinki, Finland · <a href="mailto:antonioluzano@gmail.com">antonioluzano@gmail.com</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Antonio Luzano. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
