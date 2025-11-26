@@ -10,23 +10,50 @@
   <style>
     /* Lightweight helpers that match your palette */
     .shop-intro { max-width: 760px; margin: 0 auto 22px; text-align: center; }
-    .email-cta { display:inline-flex; gap:10px; align-items:center; margin-top:8px; }
-    .copy { font-size:.9rem; padding:6px 10px; border:1px solid #9EA88F; background:#F4F2EC; border-radius:6px; cursor:pointer; }
-    .copy:hover { background:#1A1A1A; color:#F4F2EC; border-color:#1A1A1A; }
     .shop-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
     @media (max-width: 800px){ .shop-grid{ grid-template-columns:1fr; } }
     .product { background:#FFFDFC; border:1px solid #d7d3c4; padding:14px; display:flex; flex-direction:column; gap:10px; }
-    .product img { width:100%; height:auto; display:block; }
     .product h3 { font-size:1.05rem; margin:2px 0; }
     .meta { font-size:.92rem; color:#555; }
     .price { font-weight:600; }
     .buy-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    .btn { display:inline-block; padding:8px 12px; border:1px solid #9EA88F; background:#F4F2EC; text-decoration:none; border-radius:6px; transition:.2s; font-size:.95rem; }
+    .btn { display:inline-block; padding:8px 12px; border:1px solid #9EA88F; background:#F4F2EC; text-decoration:none; border-radius:6px; transition:.2s; font-size:.95rem; cursor:pointer; }
     .btn:hover { background:#1A1A1A; color:#F4F2EC; border-color:#1A1A1A; }
     .muted { color:#777; font-size:.9rem; }
     .policy { max-width:760px; margin:32px auto 0; font-size:.92rem; color:#555; }
     .small { font-size:.85rem; }
     .ok { color:#5E6B54; }
+
+    /* Emphasized email/order CTA */
+    .cta-card{
+      max-width: 760px; margin: 10px auto 22px; text-align:center;
+      border:1px solid #d7d3c4; background:#FFFDFC; padding:12px 14px;
+    }
+    .email-cta{ display:inline-flex; gap:10px; align-items:center; margin-top:6px; flex-wrap:wrap; }
+
+    /* Product thumb frame (stable layout for mixed ratios) */
+    .product-thumb{
+      aspect-ratio: 4 / 3; /* change to 1/1 if you prefer square */
+      background:#f3f0e8;
+      border:1px solid #e6decc;
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .product-thumb img{
+      width:100%; height:100%; object-fit: contain; display:block;
+      cursor: zoom-in;
+    }
+
+    /* Badges */
+    .badge{
+      display:inline-block; font-size:.78rem; padding:2px 8px; border:1px solid #cfc7b5;
+      border-radius:999px; background:#f7f5ef; color:#5E6B54;
+      vertical-align: middle; margin-left:6px;
+    }
+
+    /* Secondary (ghost) button */
+    .btn.ghost{ background:transparent; }
+    .btn.ghost:hover{ background:#1A1A1A; color:#F4F2EC; }
   </style>
 </head>
 <body>
@@ -73,38 +100,59 @@
         <h1 class="page-title">Shop</h1>
         <p class="page-intro">
           Small-batch prints, zines and originals. Prices include VAT; shipping is added at checkout.
-          <br>To purchase, send me an email with the <em>product name</em> and your <em>country</em>.
+          <br>To purchase, send me an email with the <em>product name</em>, <em>quantity</em> and your <em>country</em>.
         </p>
+      </section>
 
+      <!-- CTA card -->
+      <div class="cta-card">
         <div class="email-cta">
           <strong>Order email:</strong>
           <span id="orderEmail">antonioluzano@gmail.com</span>
-          <button class="copy" data-copy="antonioluzano@gmail.com">Copy email</button>
+          <button class="copy btn" data-copy="antonioluzano@gmail.com">Copy email</button>
+          <button class="copy btn ghost"
+                  data-copy="Hello Antonio,%0A%0AI'd like to order:%0AProduct: _______%0AQty: 1%0AShipping country: _______%0AAddress: _______%0APreferred payment: Stripe link / bank transfer%0A%0AThank you!">
+            Copy order template
+          </button>
         </div>
         <p class="small muted" style="margin-top:6px;">You’ll receive a reply confirming stock, shipping, and a payment link.</p>
-      </section>
+      </div>
 
+      <!-- Products -->
       <section class="shop-grid">
         <!-- PRODUCT 1 -->
         <article class="product">
-          <img src="../images/shop-01.jpg" alt="Fish in the City – photography zine cover">
-          <h3>Kaisaniemipuisto</h3>
-          <p class="meta">21 x 29cm. Watercolor, pastels and acrylic paint</p>
+          <div class="product-thumb">
+            <img src="../images/shop-01.jpg"
+                 alt="Kaisaniemipuisto – original painting in watercolour, pastels and acrylic"
+                 loading="lazy">
+          </div>
+
+          <h3>Kaisaniemipuisto <span class="badge">Original</span></h3>
+          <p class="meta">21 × 29 cm · Watercolour, pastels & acrylic</p>
           <p class="price">€120.00 <span class="muted">(incl. VAT)</span></p>
           <div class="buy-row">
-            <button class="btn copy" data-copy="Fish in the City — Zine">Copy product name</button>
+            <button class="btn copy" data-copy="Kaisaniemipuisto">Copy product name</button>
             <span class="muted">Ships from Helsinki</span>
           </div>
         </article>
 
-    
+        <!-- Duplicate <article class="product"> … </article> blocks for more items -->
       </section>
 
+      <!-- Policies -->
       <section class="policy">
         <p><strong>Shipping.</strong> Orders ship from Helsinki, Finland. EU & international available.</p>
         <p><strong>Returns.</strong> 14-day right of withdrawal for non-custom items; buyer pays return postage. Originals and custom orders are non-returnable unless damaged in transit.</p>
         <p class="muted">Studio Luzano · Y-tunnus: 3474123-7 · Helsinki, Finland · antonioluzano@gmail.com</p>
       </section>
+
+      <!-- Lightbox -->
+      <div id="lightbox" class="lightbox-overlay">
+        <button class="lightbox-arrow lightbox-prev" aria-label="Prev">‹</button>
+        <img src="" alt="">
+        <button class="lightbox-arrow lightbox-next" aria-label="Next">›</button>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -116,17 +164,35 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Copy-to-clipboard for email and product names
+    // Copy-to-clipboard for email, product names, and the template
     function copyText(text, btn){
-      navigator.clipboard.writeText(text).then(() => {
+      const decoded = decodeURIComponent(text); // nicer when pasting
+      navigator.clipboard.writeText(decoded).then(() => {
         const old = btn.textContent;
         btn.textContent = "Copied!";
         btn.classList.add("ok");
-        setTimeout(()=>{ btn.textContent = old; btn.classList.remove("ok"); }, 1200);
+        setTimeout(()=>{ btn.textContent = old; btn.classList.remove("ok"); }, 1100);
       });
     }
     document.querySelectorAll(".copy").forEach(btn => {
       btn.addEventListener("click", () => copyText(btn.dataset.copy, btn));
+    });
+
+    // Simple lightbox for product images
+    const lb = document.getElementById('lightbox');
+    const lbImg = lb.querySelector('img');
+    document.querySelectorAll('.product-thumb img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt || '';
+        lb.classList.add('visible');
+      });
+    });
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) {
+        lb.classList.remove('visible');
+        lbImg.src = '';
+      }
     });
   </script>
 </body>
