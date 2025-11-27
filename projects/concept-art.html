@@ -231,33 +231,48 @@
     </footer>
   </div>
 
-  <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Obfuscated password: change "blueforest" to your own and re-encode
-    // Create a new Base64 at https://www.base64encode.org/
-    const CORRECT_PASSWORD = atob("Ymx1ZWZvcmVzdA=="); // "blueforest"
+  // ---- Client-side password check with SHA-256 (better than Base64, still client-side) ----
+  // Current password is "blueforest"; this is its SHA-256 hex hash.
+  // If you change the password, generate a new SHA-256 hex and replace the value below.
+  // Example quick way (mac/linux):  printf "newpassword" | shasum -a 256
+  const PASSWORD_HASH_HEX = "e85a11225da830d3bf49fdb07f624f019ef138af9d21bbb2834c58dc59042255";
 
-    const form = document.getElementById('password-form');
-    const input = document.getElementById('portfolio-password');
-    const error = document.getElementById('password-error');
-    const box = document.getElementById('password-box');
-    const protectedContent = document.getElementById('protected-content');
+  // Hash helper: returns lowercase hex string of SHA-256(str)
+  async function sha256Hex(str) {
+    const enc = new TextEncoder().encode(str);
+    const buf = await crypto.subtle.digest("SHA-256", enc);
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const value = input.value.trim();
+  const form = document.getElementById('password-form');
+  const input = document.getElementById('portfolio-password');
+  const error = document.getElementById('password-error');
+  const box = document.getElementById('password-box');
+  const protectedContent = document.getElementById('protected-content');
 
-      if (value === CORRECT_PASSWORD) {
-        box.style.display = 'none';
-        protectedContent.classList.remove('hidden');
-        error.classList.add('hidden');
-        input.value = "";
-      } else {
-        error.classList.remove('hidden');
-      }
-    });
-  </script>
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Normalize input slightly to avoid surprise whitespace
+    const value = (input.value || "").trim();
+    const digest = await sha256Hex(value);
+
+    if (digest === PASSWORD_HASH_HEX) {
+      box.style.display = 'none';
+      protectedContent.classList.remove('hidden');
+      error.classList.add('hidden');
+      input.value = "";
+      // Optional: scroll into view when unlocked
+      protectedContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      error.classList.remove('hidden');
+    }
+  });
+</script>
+
 </body>
 </html>
