@@ -661,3 +661,10 @@ a:hover {
   margin: 0.4rem 0;
   font-family: "EB Garamond", serif;
 }
+
+.menu-item a[target="_blank"]::after {
+  content: "↗";
+  font-size: 0.8em;
+  margin-left: 3px;
+  opacity: 0.6;
+}
