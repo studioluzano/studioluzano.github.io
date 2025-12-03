@@ -31,7 +31,7 @@
     .gallery img{
       display:block; width:100%; height:auto; object-fit:contain;
       cursor:zoom-in; user-select:none; -webkit-user-drag:none;
-      background:#f3f0e8; /* gentle paper behind transparent PNGs */
+      background:#f3f0e8;
     }
 
     /* Lightbox */
@@ -181,12 +181,31 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    /* ===== Password gate with SHA-256 (client-side) =====
+    /* ===== Password gate with SHA-256 (client-side) + cached auth =====
        Current password: "blueforest"
        sha256("blueforest") = e85a11225da830d3bf49fdb07f624f019ef138af9d21bbb2834c58dc59042255
        Update PASSWORD_HASH_HEX if you change the password.
     */
     const PASSWORD_HASH_HEX = "e85a11225da830d3bf49fdb07f624f019ef138af9d21bbb2834c58dc59042255";
+
+    // Persist auth across refresh/site navigation (7 days)
+    const AUTH_KEY = "sluz_auth_v1";
+    const AUTH_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+
+    function isAuthorized() {
+      try {
+        const raw = localStorage.getItem(AUTH_KEY);
+        if (!raw) return false;
+        const data = JSON.parse(raw);
+        if (!data || data.hash !== PASSWORD_HASH_HEX) return false;
+        return (Date.now() - data.ts) < AUTH_MAX_AGE_MS;
+      } catch (_) { return false; }
+    }
+    function grantAuth() {
+      try {
+        localStorage.setItem(AUTH_KEY, JSON.stringify({ hash: PASSWORD_HASH_HEX, ts: Date.now() }));
+      } catch (_) {}
+    }
 
     async function sha256Hex(str){
       const enc = new TextEncoder().encode(str);
@@ -200,18 +219,28 @@
     const box = document.getElementById('password-box');
     const protectedContent = document.getElementById('protected-content');
 
+    function unlock() {
+      box.style.display = 'none';
+      protectedContent.classList.remove('hidden');
+      error.classList.add('hidden');
+      initLightbox();
+    }
+
+    // Auto-unlock if we already authorized recently
+    if (isAuthorized()) {
+      unlock();
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const value = (input.value || "").trim();
       const digest = await sha256Hex(value);
 
       if (digest === PASSWORD_HASH_HEX) {
-        box.style.display = 'none';
-        protectedContent.classList.remove('hidden');
-        error.classList.add('hidden');
+        grantAuth();
         input.value = "";
+        unlock();
         protectedContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        initLightbox();
       } else {
         error.classList.remove('hidden');
       }
@@ -250,7 +279,8 @@
       });
     }
 
-    if (!document.getElementById('protected-content').classList.contains('hidden')) {
+    // If content is already visible (e.g., dev preview), ensure lightbox is live
+    if (!protectedContent.classList.contains('hidden')) {
       initLightbox();
     }
   </script>
