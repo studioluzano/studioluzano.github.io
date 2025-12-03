@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Colourscript (Password Protected) · Studio Luzano</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Password-protected colourscript work by Antonio Luzano." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=colourscript" />
+
+  <style>
+    .hidden { display:none !important; }
+    .page   { max-width: 1200px; }
+
+    .section-title{
+      font-family:"Cormorant Garamond",serif;
+      font-size:1.05rem; letter-spacing:.12em; text-transform:uppercase;
+      text-align:center; color:#7a8270; margin:26px 0 16px;
+    }
+    .portfolio-section{ margin:32px 0 10px; }
+
+    /* Frameless, roomy thumbs */
+    .gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px; }
+    @media (max-width:1200px){ .gallery{ grid-template-columns:repeat(3,1fr);} }
+    @media (max-width:820px){  .gallery{ grid-template-columns:repeat(2,1fr);} }
+    @media (max-width:560px){  .gallery{ grid-template-columns:1fr;} }
+
+    .gallery img{
+      display:block; width:100%; height:auto; object-fit:contain;
+      cursor:zoom-in; user-select:none; -webkit-user-drag:none;
+      background:#f3f0e8; /* gentle paper behind transparent PNGs */
+    }
+
+    /* Lightbox */
+    .lightbox-overlay{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.9); z-index:2000;}
+    .lightbox-overlay.visible{ display:flex; }
+    .lightbox-overlay img{ max-width:92vw; max-height:92vh; box-shadow:0 20px 50px rgba(0,0,0,.6); cursor:zoom-out; }
+    .lightbox-arrow{
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:56px; height:56px; border-radius:999px; border:1px solid #F4F2EC;
+      background:rgba(0,0,0,.45); color:#F4F2EC; font-size:2.2rem;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+    }
+    .lightbox-arrow:hover{ background:rgba(0,0,0,.75); }
+    .lightbox-prev{ left:28px; } .lightbox-next{ right:28px; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="site-header">
+      <a href="../index.html" class="avatar-wrapper">
+        <img src="../images/avatar.png" alt="Portrait of Antonio Luzano" class="avatar">
+      </a>
+      <h1 class="site-title">
+        <a href="../index.html"><img src="../images/logo-name.png" alt="Antonio Luzano" class="name-logo"></a>
+      </h1>
+      <p class="tagline">Illustrator · Concept Artist</p>
+
+      <nav class="section-nav">
+<ul class="menu">
+  <li class="menu-item has-dropdown">
+    <a href="#">Illustration</a>
+    <ul class="dropdown">
+      <li><a href="/projects/run.html">RUN</a></li>
+      <li><a href="/projects/un-peu-de-toi.html">Un peu de toi</a></li>
+      <li><a href="/projects/jackies-drawing.html">Jackie’s Drawing</a></li>
+      <li><a href="/projects/everyday-walk.html">Everyday Walk</a></li>
+      <li><a href="/projects/personal.html">Personal</a></li>
+      <li><a href="/projects/pleinair.html">Plein Air</a></li>
+    </ul>
+  </li>
+
+  <li class="menu-item has-dropdown">
+    <a href="#">Animation</a>
+    <ul class="dropdown">
+      <li><a href="/projects/concept-art.html">Concept Art Portfolio (password protected)</a></li>
+      <li><a href="/projects/colourscript.html">Colourscript (password protected)</a></li>
+    </ul>
+  </li>
+
+  <li class="menu-item"><a href="/projects/studio-luzano-koulu.html">Private lessons</a></li>
+  <li class="menu-item"><a href="/projects/shop.html">Shop</a></li>
+  <li class="menu-item"><a href="https://studioluzano.substack.com/?utm_source=site_nav" target="_blank" rel="noopener">Journal</a></li>
+  <li class="menu-item"><a href="/projects/about.html">About</a></li>
+</ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <section class="text-section">
+        <h2 class="page-title">Colourscript (Password Protected)</h2>
+        <p class="page-intro">
+          A selection of colourscripts, colour keys and studies for production.
+          Access is intended for recruiters and production partners.
+        </p>
+
+        <!-- Password box -->
+        <div id="password-box" class="password-box">
+          <form id="password-form" class="password-form" autocomplete="off">
+            <label for="portfolio-password">Enter password</label>
+            <input type="password" id="portfolio-password" autocomplete="new-password" placeholder="Password" inputmode="text" />
+            <button type="submit">Enter</button>
+            <p class="password-hint">Need the password? <a href="mailto:antonioluzano@gmail.com">Email me</a>.</p>
+            <p id="password-error" class="password-error hidden" aria-live="polite">Incorrect password. Please try again.</p>
+          </form>
+        </div>
+
+        <!-- Protected content -->
+        <div id="protected-content" class="hidden" oncontextmenu="return false;">
+          <hr class="soft-divider" />
+
+          <!-- COLOUR SCRIPT -->
+          <section class="portfolio-section">
+            <h2 class="section-title">Colour Script</h2>
+            <div class="gallery">
+              <!-- Add as many as you want; keep filenames color-09.jpg, color-10.jpg, ... -->
+              <img src="../images/color-09.jpg" alt="Colourscript panel">
+              <img src="../images/color-10.jpg" alt="Colourscript panel">
+              <img src="../images/color-11.jpg" alt="Colourscript panel">
+              <img src="../images/color-12.jpg" alt="Colourscript panel">
+              <img src="../images/color-13.jpg" alt="Colourscript panel">
+              <img src="../images/color-14.jpg" alt="Colourscript panel">
+              <img src="../images/color-15.jpg" alt="Colourscript panel">
+              <img src="../images/color-16.jpg" alt="Colourscript panel">
+            </div>
+          </section>
+
+          <!-- COLOUR KEYS -->
+          <section class="portfolio-section">
+            <h2 class="section-title">Colour Keys</h2>
+            <div class="gallery">
+              <img src="../images/color-17.jpg" alt="Colour key">
+              <img src="../images/color-18.jpg" alt="Colour key">
+              <img src="../images/color-19.jpg" alt="Colour key">
+              <img src="../images/color-20.jpg" alt="Colour key">
+            </div>
+          </section>
+
+          <!-- STUDIES -->
+          <section class="portfolio-section">
+            <h2 class="section-title">Studies</h2>
+            <div class="gallery">
+              <img src="../images/color-21.jpg" alt="Study">
+              <img src="../images/color-22.jpg" alt="Study">
+              <img src="../images/color-23.jpg" alt="Study">
+              <img src="../images/color-24.jpg" alt="Study">
+            </div>
+          </section>
+
+          <hr class="soft-divider" />
+          <p class="page-intro" style="text-align:center;">More work available on request. Please do not share or redistribute.</p>
+        </div>
+      </section>
+
+      <!-- LIGHTBOX -->
+      <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+        <button class="lightbox-arrow lightbox-prev" aria-label="Previous">‹</button>
+        <img src="" alt="">
+        <button class="lightbox-arrow lightbox-next" aria-label="Next">›</button>
+      </div>
+
+      <!-- CONTACT -->
+      <section class="text-section">
+        <h2>Contact</h2>
+        <p>For work, collaborations or to request the portfolio password:<br>
+          <a href="mailto:antonioluzano@gmail.com">antonioluzano@gmail.com</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Antonio Luzano. All rights reserved. Do not copy, save or redistribute without written permission.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ===== Password gate with SHA-256 (client-side) =====
+       Current password: "blueforest"
+       sha256("blueforest") = e85a11225da830d3bf49fdb07f624f019ef138af9d21bbb2834c58dc59042255
+       Update PASSWORD_HASH_HEX if you change the password.
+    */
+    const PASSWORD_HASH_HEX = "e85a11225da830d3bf49fdb07f624f019ef138af9d21bbb2834c58dc59042255";
+
+    async function sha256Hex(str){
+      const enc = new TextEncoder().encode(str);
+      const buf = await crypto.subtle.digest("SHA-256", enc);
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,"0")).join("");
+    }
+
+    const form = document.getElementById('password-form');
+    const input = document.getElementById('portfolio-password');
+    const error = document.getElementById('password-error');
+    const box = document.getElementById('password-box');
+    const protectedContent = document.getElementById('protected-content');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const value = (input.value || "").trim();
+      const digest = await sha256Hex(value);
+
+      if (digest === PASSWORD_HASH_HEX) {
+        box.style.display = 'none';
+        protectedContent.classList.remove('hidden');
+        error.classList.add('hidden');
+        input.value = "";
+        protectedContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        initLightbox();
+      } else {
+        error.classList.remove('hidden');
+      }
+    });
+
+    /* ===== Lightbox ===== */
+    function initLightbox(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = lb.querySelector('img');
+      const lbPrev = lb.querySelector('.lightbox-prev');
+      const lbNext = lb.querySelector('.lightbox-next');
+
+      const imgs = Array.from(document.querySelectorAll('#protected-content .gallery img'));
+      const sources = imgs.map(img => img.src);
+      let i = 0;
+
+      function show(idx){ i = (idx + sources.length) % sources.length; lbImg.src = sources[i]; }
+      function openFrom(src){
+        const start = sources.indexOf(src);
+        lb.classList.add('visible'); lb.setAttribute('aria-hidden','false');
+        show(start >= 0 ? start : 0);
+      }
+      function close(){ lb.classList.remove('visible'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
+
+      imgs.forEach(img => img.addEventListener('click', () => openFrom(img.src), { passive:true }));
+      lb.addEventListener('click', close);
+      lbImg.addEventListener('click', e => e.stopPropagation());
+      lbPrev.addEventListener('click', e => { e.stopPropagation(); show(i-1); });
+      lbNext.addEventListener('click', e => { e.stopPropagation(); show(i+1); });
+
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('visible')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') show(i-1);
+        if (e.key === 'ArrowRight') show(i+1);
+      });
+    }
+
+    if (!document.getElementById('protected-content').classList.contains('hidden')) {
+      initLightbox();
+    }
+  </script>
+</body>
+</html>
