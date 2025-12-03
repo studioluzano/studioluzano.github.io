@@ -8,12 +8,12 @@
   <meta name="robots" content="noindex, nofollow" />
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=colourscript2" />
+  <link rel="stylesheet" href="../styles.css?v=colourscript-masonry" />
 
   <style>
     .hidden { display:none !important; }
 
-    /* give the art more room */
+    /* Give art a little more room */
     .page { max-width: 1320px; }
 
     .section-title{
@@ -23,21 +23,53 @@
     }
     .portfolio-section{ margin:34px 0 12px; }
 
-    /* Larger thumbs: 3 col desktop, 2 tablet, 1 phone */
+    /* ---------- Layouts ---------- */
+
+    /* A) MASONRY (great for mixed aspect ratios like Colour Script) */
+    .masonry{
+      column-count: 3;
+      column-gap: 18px;
+    }
+    @media (max-width:1100px){ .masonry{ column-count: 2; } }
+    @media (max-width:620px){  .masonry{ column-count: 1; } }
+    .masonry img{
+      width:100%;
+      height:auto;
+      display:block;
+      margin:0 0 18px;
+      break-inside: avoid;
+      background:#f3f0e8;
+      cursor:zoom-in; user-select:none; -webkit-user-drag:none;
+    }
+
+    /* B) UNIFORM GRID (clean rows for Keys/Studies) */
     .gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
     @media (max-width:1100px){ .gallery{ grid-template-columns:repeat(2,1fr);} }
     @media (max-width:620px){  .gallery{ grid-template-columns:1fr;} }
 
-    .gallery img{
-      display:block; width:100%; height:auto; object-fit:contain;
-      cursor:zoom-in; user-select:none; -webkit-user-drag:none;
+    .gallery.uniform img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit: cover;     /* crop just in the thumbnail */
       background:#f3f0e8;
+      cursor:zoom-in; user-select:none; -webkit-user-drag:none;
     }
+    /* Aspect helpers for uniform thumbs */
+    .ar-16x9 img { aspect-ratio: 16 / 9; }
+    .ar-4x3  img { aspect-ratio: 4 / 3;  }
 
-    /* Lightbox */
-    .lightbox-overlay{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.9); z-index:2000;}
+    /* ---------- Lightbox ---------- */
+    .lightbox-overlay{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+      background:rgba(0,0,0,.9); z-index:2000;
+    }
     .lightbox-overlay.visible{ display:flex; }
-    .lightbox-overlay img{ max-width:92vw; max-height:92vh; box-shadow:0 20px 50px rgba(0,0,0,.6); cursor:zoom-out; }
+    .lightbox-overlay img{
+      max-width:92vw; max-height:92vh;
+      box-shadow:0 20px 50px rgba(0,0,0,.6);
+      cursor:zoom-out;
+    }
     .lightbox-arrow{
       position:absolute; top:50%; transform:translateY(-50%);
       width:56px; height:56px; border-radius:999px; border:1px solid #F4F2EC;
@@ -114,51 +146,51 @@
         <div id="protected-content" class="hidden" oncontextmenu="return false;">
           <hr class="soft-divider" />
 
-          <!-- COLOUR SCRIPT -->
+          <!-- COLOUR SCRIPT (masonry) -->
           <section class="portfolio-section">
             <h2 class="section-title">Colour Script</h2>
-            <div class="gallery">
+            <div class="masonry">
               <img src="../images/color-04.jpg" alt="Colourscript panel" loading="lazy">
-              <img src="../images/Moomin_colourscript_saraepisode.jpg" alt="Colourscript panel" loading="lazy">              
+              <img src="../images/Moomin_colourscript_saraepisode.jpg" alt="Colourscript panel" loading="lazy">
               <img src="../images/color-09.jpg" alt="Colourscript panel" loading="lazy">
-              <img src="../images/Moomin_colorscript_auntjane.jpg" alt="Colourscript panel" loading="lazy">              
+              <img src="../images/Moomin_colorscript_auntjane.jpg" alt="Colourscript panel" loading="lazy">
               <img src="../images/color-07.jpg" alt="Colourscript panel" loading="lazy">
               <img src="../images/color-02.jpg" alt="Colourscript panel" loading="lazy">
-              <img src="../images/Firehunter_colorscript_tree.jpg" alt="Colourscript panel" loading="lazy">  
-              <img src="../images/Colourscript_brothers.jpg" alt="Colourscript panel" loading="lazy">                 
+              <img src="../images/Firehunter_colorscript_tree.jpg" alt="Colourscript panel" loading="lazy">
+              <img src="../images/Colourscript_brothers.jpg" alt="Colourscript panel" loading="lazy">
             </div>
           </section>
 
-          <!-- COLOUR KEYS -->
+          <!-- COLOUR KEYS (uniform 16:9) -->
           <section class="portfolio-section">
             <h2 class="section-title">Colour Keys</h2>
-            <div class="gallery">
+            <div class="gallery uniform ar-16x9">
               <img src="../images/key-11.jpg" alt="Colour key" loading="lazy">
               <img src="../images/key-10.jpg" alt="Colour key" loading="lazy">
               <img src="../images/key-07.jpg" alt="Colour key" loading="lazy">
               <img src="../images/Moomin_colorkey_autumnfillyjonk.jpg" alt="Colour key" loading="lazy">
-              <img src="../images/color-03.jpg" alt="Colour key" loading="lazy"> 
+              <img src="../images/color-03.jpg" alt="Colour key" loading="lazy">
               <img src="../images/color-05.jpg" alt="Colour key" loading="lazy">
-              <img src="../images/Moomin_colorkey_snorkmaidenhorse.jpg" alt="Colour key" loading="lazy">                 
+              <img src="../images/Moomin_colorkey_snorkmaidenhorse.jpg" alt="Colour key" loading="lazy">
             </div>
           </section>
 
-          <!-- STUDIES -->
+          <!-- STUDIES (uniform 4:3) -->
           <section class="portfolio-section">
             <h2 class="section-title">Studies</h2>
-            <div class="gallery">
-              <img src="../images/pleinair-1.jpg" alt="Study" loading="lazy">
-              <img src="../images/pleinair-2.jpg" alt="Study" loading="lazy">
-              <img src="../images/pleinair-3.jpg" alt="Study" loading="lazy">
-              <img src="../images/pleinair-4.jpg" alt="Study" loading="lazy">
-              <img src="../images/pleinair-5.jpg" alt="Study" loading="lazy">
-              <img src="../images/pleinair-6.jpg" alt="Study" loading="lazy">
-              <img src="../images/pleinair-7.jpg" alt="Study" loading="lazy">
-              <img src="../images/pleinair-8.jpg" alt="Study" loading="lazy">
-              <img src="../images/pleinair-9.jpg" alt="Study" loading="lazy">
+            <div class="gallery uniform ar-4x3">
+              <img src="../images/pleinair-1.jpg"  alt="Study" loading="lazy">
+              <img src="../images/pleinair-2.jpg"  alt="Study" loading="lazy">
+              <img src="../images/pleinair-3.jpg"  alt="Study" loading="lazy">
+              <img src="../images/pleinair-4.jpg"  alt="Study" loading="lazy">
+              <img src="../images/pleinair-5.jpg"  alt="Study" loading="lazy">
+              <img src="../images/pleinair-6.jpg"  alt="Study" loading="lazy">
+              <img src="../images/pleinair-7.jpg"  alt="Study" loading="lazy">
+              <img src="../images/pleinair-8.jpg"  alt="Study" loading="lazy">
+              <img src="../images/pleinair-9.jpg"  alt="Study" loading="lazy">
               <img src="../images/pleinair-10.jpg" alt="Study" loading="lazy">
-              <img src="../images/pleinair-11.jpg" alt="Study" loading="lazy"> 
-              <img src="../images/pleinair-12.jpg" alt="Study" loading="lazy">              
+              <img src="../images/pleinair-11.jpg" alt="Study" loading="lazy">
+              <img src="../images/pleinair-12.jpg" alt="Study" loading="lazy">
             </div>
           </section>
 
@@ -237,10 +269,7 @@
       initLightbox();
     }
 
-    // Auto-unlock if we already authorized recently
-    if (isAuthorized()) {
-      unlock();
-    }
+    if (isAuthorized()) unlock();
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -264,7 +293,7 @@
       const lbPrev = lb.querySelector('.lightbox-prev');
       const lbNext = lb.querySelector('.lightbox-next');
 
-      const imgs = Array.from(document.querySelectorAll('#protected-content .gallery img'));
+      const imgs = Array.from(document.querySelectorAll('#protected-content .gallery img, #protected-content .masonry img'));
       const sources = imgs.map(img => img.src);
       let i = 0;
 
@@ -290,7 +319,6 @@
       });
     }
 
-    // If content is already visible (e.g., dev preview), ensure lightbox is live
     if (!protectedContent.classList.contains('hidden')) {
       initLightbox();
     }
