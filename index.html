@@ -3,14 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Antonio Luzano – Portfolio</title>
-
-  <!-- iPhone/Instagram friendly viewport (no maximum-scale) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-  <!-- Nice-to-have mobile polish -->
-  <meta name="theme-color" content="#F4F2EC">
-  <meta name="format-detection" content="telephone=no">
-
+  <!-- back to the previous viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
   <meta name="description" content="Illustration and concept art by Antonio Luzano." />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=7" />
@@ -20,12 +14,10 @@
   <div class="page">
     <!-- HEADER -->
     <header class="site-header">
-      <!-- Avatar (clickable, goes to homepage) -->
       <a href="index.html" class="avatar-wrapper">
         <img src="images/avatar.png" alt="Portrait of Antonio Luzano" class="avatar">
       </a>
 
-      <!-- Hand-drawn signature logo (clickable, goes to homepage) -->
       <h1 class="site-title">
         <a href="index.html">
           <img src="images/logo-name.png" alt="Antonio Luzano" class="name-logo">
@@ -34,7 +26,6 @@
 
       <p class="tagline">Illustrator · Concept Artist</p>
 
-      <!-- Top navigation with dropdowns on hover -->
       <nav class="section-nav">
         <ul class="menu">
           <li class="menu-item has-dropdown">
@@ -68,19 +59,17 @@
 
     <!-- MAIN CONTENT -->
     <main>
-      <!-- Hero image slider -->
       <section class="hero">
         <div class="hero-slider">
-          <img src="images/personal-06.jpg" alt="RUN – graphic novel spread" class="hero-slide active" loading="eager" fetchpriority="high">
-          <img src="images/run-04.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
-          <img src="images/jackies-drawing-10.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
-          <img src="images/personal-08.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
-          <img src="images/pleinair-1.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
-          <img src="images/nino-08.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
+          <img src="images/personal-06.jpg" alt="RUN – graphic novel spread" class="hero-slide active">
+          <img src="images/run-04.jpg" alt="Another illustration" class="hero-slide">
+          <img src="images/jackies-drawing-10.jpg" alt="Another illustration" class="hero-slide">
+          <img src="images/personal-08.jpg" alt="Another illustration" class="hero-slide">
+          <img src="images/pleinair-1.jpg" alt="Another illustration" class="hero-slide">
+          <img src="images/nino-08.jpg" alt="Another illustration" class="hero-slide">
         </div>
       </section>
 
-      <!-- Contact section -->
       <section id="contact" class="text-section">
         <h2>Contact</h2>
         <p>
@@ -95,19 +84,17 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
       <p>© <span id="year"></span> Antonio Luzano. All rights reserved. Do not copy, save or redistribute without written permission.</p>
     </footer>
   </div>
 
-  <!-- Defer so JS doesn't block first paint -->
-  <script defer>
+  <script>
     // Set year in footer
-    document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-      // Simple hero crossfade
+    // Simple hero crossfade
+    document.addEventListener('DOMContentLoaded', function () {
       const slides = document.querySelectorAll('.hero-slide');
       if (!slides.length) return;
 
@@ -119,7 +106,7 @@
           slides[current].classList.remove('active');
           current = (current + 1) % slides.length;
           slides[current].classList.add('active');
-        }, 5000); // 5 seconds per slide
+        }, 5000);
       }
     });
   </script>
