@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <title>Antonio Luzano – Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+
+  <!-- iPhone/Instagram friendly viewport (no maximum-scale) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- Nice-to-have mobile polish -->
+  <meta name="theme-color" content="#F4F2EC">
+  <meta name="format-detection" content="telephone=no">
+
   <meta name="description" content="Illustration and concept art by Antonio Luzano." />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=7" />
@@ -29,34 +36,33 @@
 
       <!-- Top navigation with dropdowns on hover -->
       <nav class="section-nav">
-<ul class="menu">
-  <li class="menu-item has-dropdown">
-    <a href="#">Illustration</a>
-    <ul class="dropdown">
-      <li><a href="/projects/run.html">RUN</a></li>
-      <li><a href="/projects/jackies-drawing.html">Jackie’s Drawing</a></li>
-      <li><a href="/projects/everyday-walk.html">Everyday Walk</a></li>
-      <li><a href="/projects/personal.html">Personal</a></li>
-      <li><a href="/projects/pleinair.html">Plein Air</a></li>
-    </ul>
-  </li>
+        <ul class="menu">
+          <li class="menu-item has-dropdown">
+            <a href="#">Illustration</a>
+            <ul class="dropdown">
+              <li><a href="/projects/run.html">RUN</a></li>
+              <li><a href="/projects/jackies-drawing.html">Jackie’s Drawing</a></li>
+              <li><a href="/projects/everyday-walk.html">Everyday Walk</a></li>
+              <li><a href="/projects/personal.html">Personal</a></li>
+              <li><a href="/projects/pleinair.html">Plein Air</a></li>
+            </ul>
+          </li>
 
-<li class="menu-item has-dropdown">
-  <a href="#">Animation</a>
-  <ul class="dropdown">
-    <li><a href="/projects/concept-art.html">Concept Art</a></li>
-    <li><a href="/projects/colourscript.html">Colourscript</a></li>
-  </ul>
-</li>
+          <li class="menu-item has-dropdown">
+            <a href="#">Animation</a>
+            <ul class="dropdown">
+              <li><a href="/projects/concept-art.html">Concept Art</a></li>
+              <li><a href="/projects/colourscript.html">Colourscript</a></li>
+            </ul>
+          </li>
 
-
-  <li class="menu-item"><a href="/projects/studio-luzano-koulu.html">Private lessons</a></li>
-  <li class="menu-item"><a href="/projects/shop.html">Shop</a></li>
-  <li class="menu-item">
-    <a href="https://studioluzano.substack.com/?utm_source=site_nav" target="_blank" rel="noopener">Journal</a>
-  </li>
-  <li class="menu-item"><a href="/projects/about.html">About</a></li>
-</ul>
+          <li class="menu-item"><a href="/projects/studio-luzano-koulu.html">Private lessons</a></li>
+          <li class="menu-item"><a href="/projects/shop.html">Shop</a></li>
+          <li class="menu-item">
+            <a href="https://studioluzano.substack.com/?utm_source=site_nav" target="_blank" rel="noopener">Journal</a>
+          </li>
+          <li class="menu-item"><a href="/projects/about.html">About</a></li>
+        </ul>
       </nav>
     </header>
 
@@ -65,30 +71,12 @@
       <!-- Hero image slider -->
       <section class="hero">
         <div class="hero-slider">
-          <img src="images/personal-06.jpg"
-               alt="RUN – graphic novel spread"
-               class="hero-slide active">
-
-          <img src="images/run-04.jpg"
-               alt="Another illustration"
-               class="hero-slide">     
-
-          <img src="images/jackies-drawing-10.jpg"
-               alt="Another illustration"
-               class="hero-slide">
-
-          <img src="images/personal-08.jpg"
-               alt="Another illustration"
-               class="hero-slide">
-
-          <img src="images/pleinair-1.jpg"
-               alt="Another illustration"
-               class="hero-slide">          
-
-          <img src="images/nino-08.jpg"
-               alt="Another illustration"
-               class="hero-slide">    
-          
+          <img src="images/personal-06.jpg" alt="RUN – graphic novel spread" class="hero-slide active" loading="eager" fetchpriority="high">
+          <img src="images/run-04.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
+          <img src="images/jackies-drawing-10.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
+          <img src="images/personal-08.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
+          <img src="images/pleinair-1.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
+          <img src="images/nino-08.jpg" alt="Another illustration" class="hero-slide" loading="lazy">
         </div>
       </section>
 
@@ -113,12 +101,13 @@
     </footer>
   </div>
 
-  <script>
+  <!-- Defer so JS doesn't block first paint -->
+  <script defer>
     // Set year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Simple hero crossfade
     document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Simple hero crossfade
       const slides = document.querySelectorAll('.hero-slide');
       if (!slides.length) return;
 
