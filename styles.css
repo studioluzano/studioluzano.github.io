@@ -10,7 +10,17 @@
 }
 
 html, body {
+  width: 100%;
   height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background: #F4F2EC;            /* warm cream */
+  -webkit-text-size-adjust: 100%; /* fix iOS zooming & text scaling */
+  text-size-adjust: 100%;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 body {
@@ -667,4 +677,25 @@ a:hover {
   font-size: 0.8em;
   margin-left: 3px;
   opacity: 0.6;
+}
+
+/* Prevent iOS/Instagram browser from zooming or wrapping nav text */
+.section-nav .menu {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+}
+
+.section-nav .menu-item {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+/* Slightly smaller font for nav on narrow screens */
+@media (max-width: 480px) {
+  .section-nav a {
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+  }
 }
