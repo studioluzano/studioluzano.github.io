@@ -706,3 +706,58 @@ a:hover {
     gap: 10px;   /* if your menu uses flex/gap; safe to leave in */
   }
 }
+
+/* ===== iOS/Instagram safe-area + compact header ===== */
+
+/* Give ONLY the header extra top padding for the notch bars */
+@supports (padding: max(0px)) {
+  .site-header {
+    /* more generous top padding for in-app browsers */
+    padding-top: max(24px, calc(env(safe-area-inset-top) + 16px));
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* Keep menus above art so dropdowns always sit on top */
+.site-header   { position: relative; z-index: 20; }
+.section-nav   { position: relative; z-index: 30; }
+.menu .dropdown{ z-index: 40; }
+.hero          { position: relative; z-index: 1; }
+
+/* --- Compact header on small phones --- */
+@media (max-width: 430px) {
+  /* shrink avatar/logo just a touch */
+  .avatar   { width: 64px; height: 64px; }
+  .name-logo{ max-width: 230px; height: auto; }
+
+  /* tagline + nav a bit smaller and tighter line-height */
+  .tagline { font-size: 0.95rem; line-height: 1.2; margin-top: 6px; }
+
+  .section-nav .menu {
+    display: flex;
+    flex-wrap: wrap;          /* allow wrapping to second line cleanly */
+    gap: 8px 14px;            /* row-gap / column-gap */
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .section-nav .menu > .menu-item > a {
+    font-size: 16px;          /* was larger; this prevents crowding */
+    line-height: 1.25;
+    padding: 2px 0;
+    letter-spacing: .02em;
+    white-space: nowrap;      /* avoid ugly mid-word breaks */
+  }
+
+  /* Optional: keep “Private lessons” together on one line */
+  .section-nav .menu > .menu-item > a[href*="studio-luzano-koulu"],
+  .section-nav .menu > .menu-item > a[href*="private"] {
+    white-space: nowrap;
+  }
+}
+
+/* If Instagram still overlaps on some devices, give the MAIN a tiny top buffer */
+@media (max-width: 430px) {
+  main { margin-top: 6px; }
+}
