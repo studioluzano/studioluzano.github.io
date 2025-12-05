@@ -668,3 +668,41 @@ a:hover {
   margin-left: 3px;
   opacity: 0.6;
 }
+
+/* =========================
+   iOS in-app browser fixes
+   (Instagram/Safari safe-areas)
+   ========================= */
+
+/* Give ONLY the header safe-area padding on iOS.
+   Using max() keeps normal padding on other devices. */
+@supports (padding: max(0px)) {
+  .site-header {
+    padding-top: max(16px, env(safe-area-inset-top));
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* Keep menus above the hero/art, so dropdowns remain tappable */
+.site-header { position: relative; z-index: 20; }
+.section-nav   { position: relative; z-index: 30; }
+.menu .dropdown { z-index: 40; }
+.hero          { position: relative; z-index: 1; }
+
+/* Small-screen header tune-up (prevents “squish”/clip) */
+@media (max-width: 420px) {
+  .avatar {
+    width: 68px;
+    height: 68px;
+  }
+  .name-logo {
+    max-width: 260px;   /* adjust if you prefer a bit larger */
+    height: auto;
+  }
+
+  /* Optional: a touch more space between nav items */
+  .section-nav .menu {
+    gap: 10px;   /* if your menu uses flex/gap; safe to leave in */
+  }
+}
