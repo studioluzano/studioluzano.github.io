@@ -668,24 +668,3 @@ a:hover {
   margin-left: 3px;
   opacity: 0.6;
 }
-
-/* Prevent iOS/Instagram browser from zooming or wrapping nav text */
-.section-nav .menu {
-  white-space: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  text-align: center;
-}
-
-.section-nav .menu-item {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-/* Slightly smaller font for nav on narrow screens */
-@media (max-width: 480px) {
-  .section-nav a {
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
-  }
-}
