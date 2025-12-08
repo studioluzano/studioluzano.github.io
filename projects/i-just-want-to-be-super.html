@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>I Just Want to be Super! · Studio Luzano</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Selected illustrations from the children's book I Just Want to be Super! by Antonio Luzano." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Page-specific tweaks (remove black frame/border) -->
+  <style>
+    /* make the slider container frameless and transparent */
+    .run-slider .run-frame{
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    /* keep your nice max-width image but without any surrounding frame look */
+    .run-slider .run-slide-img{
+      display:block;
+      width:100%;
+      height:auto;
+      background: transparent !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="site-header">
+      <a href="../index.html" class="avatar-wrapper">
+        <img src="../images/avatar.png" alt="Portrait of Antonio Luzano" class="avatar">
+      </a>
+
+      <h1 class="site-title">
+        <a href="../index.html">
+          <img src="../images/logo-name.png" alt="Antonio Luzano" class="name-logo">
+        </a>
+      </h1>
+
+      <p class="tagline">Illustrator · Concept Artist</p>
+
+      <nav class="section-nav">
+<ul class="menu">
+  <li class="menu-item has-dropdown">
+    <a href="#">Illustration</a>
+    <ul class="dropdown">
+      <li><a href="/projects/run.html">RUN</a></li>
+      <li><a href="/projects/jackies-drawing.html">Jackie’s Drawing</a></li>
+      <li><a href="/projects/everyday-walk.html">Everyday Walk</a></li>
+      <li><a href="/projects/personal.html">Personal</a></li>
+      <li><a href="/projects/pleinair.html">Plein Air</a></li>
+      <!-- (Optional) add this page to the menu when you're ready -->
+      <!-- <li><a href="/projects/i-just-want-to-be-super.html">I Just Want to be Super!</a></li> -->
+    </ul>
+  </li>
+
+  <li class="menu-item has-dropdown">
+    <a href="#">Animation</a>
+    <ul class="dropdown">
+      <li><a href="/projects/concept-art.html">Concept Art</a></li>
+      <li><a href="/projects/colourscript.html">Colourscript</a></li>
+    </ul>
+  </li>
+
+  <li class="menu-item"><a href="/projects/studio-luzano-koulu.html">Private lessons</a></li>
+  <li class="menu-item"><a href="/projects/shop.html">Shop</a></li>
+  <li class="menu-item">
+    <a href="https://studioluzano.substack.com/?utm_source=site_nav" target="_blank" rel="noopener">Journal</a>
+  </li>
+  <li class="menu-item"><a href="/projects/about.html">About</a></li>
+</ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <section class="project-intro">
+        <h1 class="page-title">I Just Want to be Super!</h1>
+
+        <p class="page-intro">
+          Selected illustrations from the children’s picture book <em>I Just Want to be Super!</em> —
+          a playful story about a kid who tries on every “super” they can imagine until they discover the
+          most important power of all.
+        </p>
+      </section>
+
+      <!-- SLIDER (same mechanics as Jackie’s page, but frameless) -->
+      <section class="run-slider">
+        <div class="run-frame">
+          <button class="run-arrow run-prev" aria-label="Previous image">‹</button>
+
+          <img
+            id="run-slide-img"
+            class="run-slide-img"
+            src="../images/super-01.jpg"
+            alt="I Just Want to be Super! — illustration 01"
+          >
+
+          <button class="run-arrow run-next" aria-label="Next image">›</button>
+        </div>
+
+        <p id="run-slide-caption" class="run-caption">
+          Cover concept.
+        </p>
+      </section>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox-overlay">
+      <button class="lightbox-arrow lightbox-prev" aria-label="Previous image">‹</button>
+      <img src="" alt="">
+      <button class="lightbox-arrow lightbox-next" aria-label="Next image">›</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Studio Luzano. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- SUPER! SLIDES (update filenames as needed) ---
+    const runSlides = [
+      { src: '../images/nino-01.jpg', alt: 'Super! 01', caption: 'Cover concept.' },
+      { src: '../images/nino-02.jpg', alt: 'Super! 02', caption: 'Character moment.' },
+      { src: '../images/nino-03.jpg', alt: 'Super! 03', caption: 'Interior spread.' },
+      { src: '../images/nino-04.jpg', alt: 'Super! 04', caption: 'Interior spread.' },
+      { src: '../images/nino-05.jpg', alt: 'Super! 05', caption: 'Action beat.' },
+      { src: '../images/nino-06.jpg', alt: 'Super! 06', caption: 'Quiet beat.' },
+      { src: '../images/nino-07.jpg', alt: 'Super! 07', caption: 'Friends join in.' },
+      { src: '../images/nino-08.jpg', alt: 'Super! 08', caption: 'Turning point.' },
+      { src: '../images/nino-09.jpg', alt: 'Super! 09', caption: 'Final spread.' }
+      { src: '../images/nino-10.jpg', alt: 'Super! 09', caption: 'Final spread.' } 
+      { src: '../images/nino-11.jpg', alt: 'Super! 09', caption: 'Final spread.' }        
+    ];
+
+    const runImg      = document.getElementById('run-slide-img');
+    const runCaption  = document.getElementById('run-slide-caption');
+    const prevBtn     = document.querySelector('.run-prev');
+    const nextBtn     = document.querySelector('.run-next');
+
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = lightbox.querySelector('img');
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
+
+    let runIndex = 0;
+
+    function showRunSlide(index) {
+      if (index < 0) index = runSlides.length - 1;
+      if (index >= runSlides.length) index = 0;
+
+      runIndex = index;
+      const slide = runSlides[index];
+
+      runImg.style.opacity = 0;
+
+      setTimeout(() => {
+        runImg.src = slide.src;
+        runImg.alt = slide.alt;
+        runCaption.textContent = slide.caption;
+        runImg.style.opacity = 1;
+
+        if (lightbox.classList.contains('visible')) {
+          lightboxImg.src = slide.src;
+          lightboxImg.alt = slide.alt;
+        }
+      }, 200);
+    }
+
+    prevBtn.addEventListener('click', () => showRunSlide(runIndex - 1));
+    nextBtn.addEventListener('click', () => showRunSlide(runIndex + 1));
+    showRunSlide(0);
+
+    // Lightbox
+    runImg.addEventListener('click', () => {
+      const slide = runSlides[runIndex];
+      lightboxImg.src = slide.src;
+      lightboxImg.alt = slide.alt;
+      lightbox.classList.add('visible');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('visible');
+        lightboxImg.src = '';
+      }
+    });
+
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showRunSlide(runIndex - 1);
+    });
+
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showRunSlide(runIndex + 1);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') showRunSlide(runIndex - 1);
+      else if (e.key === 'ArrowRight') showRunSlide(runIndex + 1);
+      else if (e.key === 'Escape') {
+        lightbox.classList.remove('visible');
+        lightboxImg.src = '';
+      }
+    });
+  </script>
+</body>
+</html>
