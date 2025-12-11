@@ -6,6 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .agent-list {
+      margin-top: 10px;
+      line-height: 1.8;
+    }
+    .agent-list p {
+      margin: 0;
+    }
+    .agent-name {
+      font-weight: 500;
+      color: #5E6B54; /* same moss tone as your headings */
+    }
+    .agent-email a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .agent-email a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
@@ -78,23 +99,23 @@
 
   <section class="text-section">
     <h2>Contact</h2>
+
     <p>
       <a href="mailto:antonioluzano@gmail.com">antonioluzano@gmail.com</a>
     </p>
 
     <p>
-      I'm represented by Transatlantic Agency for publishing projects. For inquiries, please contact:
+      Represented by <strong>Transatlantic Agency</strong> for publishing projects.<br>
+      For inquiries, please contact:
     </p>
 
-    <p>
-      Lisa Rambert
-      lisa@transatlanticagency.com
-    </p>
+    <div class="agent-list">
+      <p class="agent-name">Lisa Rambert</p>
+      <p class="agent-email"><a href="mailto:lisa@transatlanticagency.com">lisa@transatlanticagency.com</a></p>
 
-     <p>
-      Amy Tompkins
-      amy@transatlanticagency.com
-    </p>   
+      <p class="agent-name">Amy Tompkins</p>
+      <p class="agent-email"><a href="mailto:amy@transatlanticagency.com">amy@transatlanticagency.com</a></p>
+    </div>
   </section>
 </main>
 
