@@ -3,27 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <title>Antonio Luzano – Portfolio</title>
-  <!-- back to the previous viewport -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Illustration and concept art by Antonio Luzano." />
+
+  <!-- Fonts & styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
+
+  <!-- Favicon / metadata -->
   <link rel="icon" href="/images/favicon.ico">
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<meta name="theme-color" content="#F4F2EC">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#F4F2EC">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Antonio Luzano – Illustrator · Concept Artist">
-<meta property="og:description" content="Illustration and concept art by Antonio Luzano.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://antonioluzano.com/">
-<meta property="og:image" content="https://antonioluzano.com/images/og-cover.jpg">
+  <meta property="og:title" content="Antonio Luzano – Illustrator · Concept Artist">
+  <meta property="og:description" content="Illustration and concept art by Antonio Luzano.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://antonioluzano.com/">
+  <meta property="og:image" content="https://antonioluzano.com/images/og-cover.jpg">
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Antonio Luzano – Illustrator · Concept Artist">
-<meta name="twitter:description" content="Illustration and concept art by Antonio Luzano.">
-<meta name="twitter:image" content="https://antonioluzano.com/images/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Antonio Luzano – Illustrator · Concept Artist">
+  <meta name="twitter:description" content="Illustration and concept art by Antonio Luzano.">
+  <meta name="twitter:image" content="https://antonioluzano.com/images/og-cover.jpg">
+
+  <!-- Page-specific: Masonry Grid -->
+  <style>
+    .page { max-width: 1320px; }
+
+    /* Masonry layout using CSS columns (no JS) */
+    .masonry {
+      column-width: 320px;
+      column-gap: 18px;
+      padding: 8px;
+    }
+    @media (max-width: 1200px) { .masonry { column-width: 280px; } }
+    @media (max-width: 900px)  { .masonry { column-width: 240px; } }
+    @media (max-width: 640px)  { .masonry { column-width: 100%; } }
+
+    .masonry img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 0 18px;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      background: #f3f0e8;
+      cursor: zoom-in;
+      transition: transform 0.25s ease;
+    }
+
+    .masonry img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Lightbox overlay */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+    }
+    .lightbox-overlay.visible { display: flex; }
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      cursor: zoom-out;
+    }
+  </style>
 </head>
 
 <body>
@@ -55,7 +106,6 @@
               <li><a href="/projects/pleinair.html">Plein Air</a></li>
             </ul>
           </li>
-
           <li class="menu-item has-dropdown">
             <a href="#">Animation</a>
             <ul class="dropdown">
@@ -63,39 +113,43 @@
               <li><a href="/projects/colourscript.html">Colourscript</a></li>
             </ul>
           </li>
-
           <li class="menu-item"><a href="/projects/studio-luzano-koulu.html">Private lessons</a></li>
           <li class="menu-item"><a href="/projects/shop.html">Shop</a></li>
-          <li class="menu-item">
-            <a href="https://studioluzano.substack.com/?utm_source=site_nav" target="_blank" rel="noopener">Journal</a>
-          </li>
+          <li class="menu-item"><a href="https://studioluzano.substack.com/?utm_source=site_nav" target="_blank" rel="noopener">Journal</a></li>
           <li class="menu-item"><a href="/projects/about.html">About</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <main>
-      <section class="hero">
-        <div class="hero-slider">
-          <img src="images/personal-06.jpg" alt="RUN – graphic novel spread" class="hero-slide active">
-          <img src="images/run-04.jpg" alt="Another illustration" class="hero-slide">
-          <img src="images/jackies-drawing-10.jpg" alt="Another illustration" class="hero-slide">        
-          <img src="images/personal-08.jpg" alt="Another illustration" class="hero-slide">
-          <img src="images/pleinair-1.jpg" alt="Another illustration" class="hero-slide">
-          <img src="images/nino-08.jpg" alt="Another illustration" class="hero-slide">
-          <img src="images/nino-04.jpg" alt="Another illustration" class="hero-slide">          
-          <img src="images/jackies-drawing-03.jpg" alt="Another illustration" class="hero-slide">          
-        </div>
+      <section class="masonry">
+        <img src="images/run-04.jpg" alt="RUN – spread" loading="lazy">
+        <img src="images/jackies-drawing-10.jpg" alt="Jackie’s Drawing interior" loading="lazy">
+        <img src="images/personal-06.jpg" alt="Personal illustration" loading="lazy">
+        <img src="images/pleinair-1.jpg" alt="Plein air painting" loading="lazy">
+        <img src="images/nino-08.jpg" alt="I Just Want to be Super! – spread" loading="lazy">
+        <img src="images/nino-04.jpg" alt="I Just Want to be Super! – moment" loading="lazy">
+        <img src="images/jackies-drawing-03.jpg" alt="Jackie and chimera" loading="lazy">
+        <img src="images/personal-08.jpg" alt="Personal illustration" loading="lazy">
+        <img src="images/color-03.jpg" alt="Colour key" loading="lazy">
+        <img src="images/color-04.jpg" alt="Colour script panel" loading="lazy">
+        <img src="images/pleinair-10.jpg" alt="Plein air lake" loading="lazy">
+        <img src="images/personal-05.jpg" alt="Personal piece" loading="lazy">
       </section>
 
+      <!-- LIGHTBOX -->
+      <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+        <img src="" alt="">
+      </div>
+
+      <!-- CONTACT -->
       <section id="contact" class="text-section">
         <h2>Contact</h2>
         <p>
           For work or class enquiries:<br />
           <a href="mailto:antonioluzano@gmail.com">antonioluzano@gmail.com</a>
         </p>
-
         <div class="social-links">
           <a href="https://www.instagram.com/studioluzano" target="_blank" rel="noopener">Instagram</a>
           <a href="#" target="_blank" rel="noopener">LinkedIn</a>
@@ -104,29 +158,29 @@
     </main>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> Antonio Luzano. All rights reserved. Do not copy, save or redistribute without written permission.</p>
+      <p>© <span id="year"></span> Antonio Luzano. All rights reserved.</p>
     </footer>
   </div>
 
   <script>
-    // Set year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Simple hero crossfade
-    document.addEventListener('DOMContentLoaded', function () {
-      const slides = document.querySelectorAll('.hero-slide');
-      if (!slides.length) return;
+    // Simple lightbox on click
+    const masonry = document.querySelector('.masonry');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = lightbox.querySelector('img');
 
-      let current = 0;
-      slides[current].classList.add('active');
+    masonry.addEventListener('click', e => {
+      if (e.target.tagName !== 'IMG') return;
+      lbImg.src = e.target.src;
+      lightbox.classList.add('visible');
+      lightbox.setAttribute('aria-hidden','false');
+    });
 
-      if (slides.length > 1) {
-        setInterval(function () {
-          slides[current].classList.remove('active');
-          current = (current + 1) % slides.length;
-          slides[current].classList.add('active');
-        }, 5000);
-      }
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('visible');
+      lightbox.setAttribute('aria-hidden','true');
+      lbImg.src = '';
     });
   </script>
 </body>
