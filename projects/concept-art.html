@@ -22,7 +22,7 @@
       text-align:center; color:#7a8270; margin:26px 0 16px;
     }
 
-    /* Masonry layout */
+    /* Masonry layout (protected) */
     .masonry{ column-count:3; column-gap:22px; }
     @media (max-width:1100px){ .masonry{ column-count:2; } }
     @media (max-width:640px){  .masonry{ column-count:1; } }
@@ -49,9 +49,9 @@
       margin: 18px 0 12px;
     }
 
-    .preview-masonry{ column-count:3; column-gap:22px; }
-    @media (max-width:1100px){ .preview-masonry{ column-count:2; } }
-    @media (max-width:640px){  .preview-masonry{ column-count:1; } }
+    /* Make preview larger/cleaner: 2 cols desktop, 1 col mobile */
+    .preview-masonry{ column-count:2; column-gap:22px; }
+    @media (max-width:640px){ .preview-masonry{ column-count:1; } }
 
     .preview-masonry img{
       width:100%;
@@ -63,14 +63,7 @@
       border-radius: 4px;
       filter: saturate(0.96) contrast(0.98);
       user-select:none; -webkit-user-drag:none;
-      cursor: default;
-    }
-
-    .preview-note{
-      text-align:center;
-      color:#777;
-      font-size:.92rem;
-      margin-top: -6px;
+      cursor: zoom-in;
     }
 
     /* Soft deterrent */
@@ -172,8 +165,7 @@
         <!-- PREVIEW (visible before password) -->
         <div id="preview-wrap" class="preview-wrap">
           <div class="preview-title">Preview</div>
-          <div class="preview-masonry">
-            <!-- Swap these 3 to whichever images you want as the teaser -->
+          <div class="preview-masonry" id="preview-masonry">
             <img src="../images/key-08.jpg" alt="Concept art preview 1">
             <img src="../images/env-02.jpg" alt="Concept art preview 2">
             <img src="../images/prop-02.jpg" alt="Concept art preview 3">
@@ -303,7 +295,8 @@
 
       protectedContent.classList.remove('hidden');
       error.classList.add('hidden');
-      initLightbox();
+
+      wireProtectedLightboxClicks();
     }
 
     // Auto-unlock if already authorized recently
@@ -324,43 +317,74 @@
       }
     });
 
-    /* ===== Lightbox ===== */
-    function initLightbox(){
-      const lb    = document.getElementById('lightbox');
-      const lbImg = lb.querySelector('img');
-      const prev  = lb.querySelector('.lightbox-prev');
-      const next  = lb.querySelector('.lightbox-next');
+    /* ===== Shared Lightbox (Preview + Protected) ===== */
+    const lb    = document.getElementById('lightbox');
+    const lbImg = lb.querySelector('img');
+    const prev  = lb.querySelector('.lightbox-prev');
+    const next  = lb.querySelector('.lightbox-next');
 
+    let sources = [];
+    let i = 0;
+
+    function show(idx){
+      if (!sources.length) return;
+      i = (idx + sources.length) % sources.length;
+      lbImg.src = sources[i];
+    }
+
+    function openGallery(srcList, startSrc){
+      sources = srcList.slice();
+      const start = sources.indexOf(startSrc);
+      lb.classList.add('visible');
+      lb.setAttribute('aria-hidden','false');
+      show(start >= 0 ? start : 0);
+    }
+
+    function closeLB(){
+      lb.classList.remove('visible');
+      lb.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+    }
+
+    // Close by clicking backdrop (not the image)
+    lb.addEventListener('click', closeLB);
+    lbImg.addEventListener('click', e => e.stopPropagation());
+    prev.addEventListener('click', e => { e.stopPropagation(); show(i - 1); });
+    next.addEventListener('click', e => { e.stopPropagation(); show(i + 1); });
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('visible')) return;
+      if (e.key === 'Escape') closeLB();
+      if (e.key === 'ArrowLeft') show(i - 1);
+      if (e.key === 'ArrowRight') show(i + 1);
+    });
+
+    // Wire PREVIEW clicks (always available before password)
+    function wirePreviewLightboxClicks(){
+      const previewImgs = Array.from(document.querySelectorAll('#preview-masonry img'));
+      if (!previewImgs.length) return;
+      const previewSources = previewImgs.map(img => img.src);
+
+      previewImgs.forEach(img => {
+        img.addEventListener('click', () => openGallery(previewSources, img.src));
+      });
+    }
+    wirePreviewLightboxClicks();
+
+    // Wire PROTECTED clicks (only after unlock)
+    function wireProtectedLightboxClicks(){
       const imgs = Array.from(document.querySelectorAll('#protected-content .masonry img'));
-      const sources = imgs.map(img => img.src);
-      let i = 0;
+      if (!imgs.length) return;
+      const protectedSources = imgs.map(img => img.src);
 
-      function show(idx){ i = (idx + sources.length) % sources.length; lbImg.src = sources[i]; }
-      function openFrom(src){
-        const start = sources.indexOf(src);
-        lb.classList.add('visible');
-        lb.setAttribute('aria-hidden','false');
-        show(start >= 0 ? start : 0);
-      }
-      function close(){ lb.classList.remove('visible'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
-
-      imgs.forEach(img => img.addEventListener('click', () => openFrom(img.src), { passive:true }));
-      lb.addEventListener('click', close);
-      lbImg.addEventListener('click', e => e.stopPropagation());
-      prev.addEventListener('click', e => { e.stopPropagation(); show(i-1); });
-      next.addEventListener('click', e => { e.stopPropagation(); show(i+1); });
-
-      document.addEventListener('keydown', e => {
-        if (!lb.classList.contains('visible')) return;
-        if (e.key === 'Escape') close();
-        if (e.key === 'ArrowLeft') show(i-1);
-        if (e.key === 'ArrowRight') show(i+1);
+      imgs.forEach(img => {
+        img.addEventListener('click', () => openGallery(protectedSources, img.src));
       });
     }
 
     // If loaded with content already visible (dev preview)
     if (!protectedContent.classList.contains('hidden')) {
-      initLightbox();
+      wireProtectedLightboxClicks();
     }
   </script>
 </body>
