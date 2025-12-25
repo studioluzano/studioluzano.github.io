@@ -59,6 +59,37 @@
     .ar-16x9 img { aspect-ratio: 16 / 9; }
     .ar-4x3  img { aspect-ratio: 4 / 3;  }
 
+    /* ===== PREVIEW (visible before password) ===== */
+    .preview-wrap { margin: 18px 0 6px; }
+    .preview-title{
+      font-family:"Cormorant Garamond",serif;
+      font-size:.95rem;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      text-align:center;
+      color:#7a8270;
+      margin: 18px 0 12px;
+    }
+    /* Larger preview: 2 columns desktop, 1 column mobile */
+    .preview-masonry{ column-count:2; column-gap:18px; }
+    @media (max-width:620px){ .preview-masonry{ column-count:1; } }
+
+    .preview-masonry img{
+      width:100%;
+      height:auto;
+      display:block;
+      margin:0 0 18px;
+      break-inside:avoid;
+      background:#f3f0e8;
+      border-radius:4px;
+      filter:saturate(.96) contrast(.98);
+      user-select:none; -webkit-user-drag:none;
+      cursor:zoom-in;
+    }
+
+    /* Soft deterrent */
+    #protected-content img { -webkit-user-drag:none; user-select:none; }
+
     /* ---------- Lightbox ---------- */
     .lightbox-overlay{
       position:fixed; inset:0; display:none; align-items:center; justify-content:center;
@@ -75,6 +106,7 @@
       width:56px; height:56px; border-radius:999px; border:1px solid #F4F2EC;
       background:rgba(0,0,0,.45); color:#F4F2EC; font-size:2.2rem;
       display:flex; align-items:center; justify-content:center; cursor:pointer;
+      user-select:none;
     }
     .lightbox-arrow:hover{ background:rgba(0,0,0,.75); }
     .lightbox-prev{ left:28px; } .lightbox-next{ right:28px; }
@@ -100,7 +132,7 @@
     <ul class="dropdown">
       <li><a href="/projects/run.html">RUN</a></li>
       <li><a href="/projects/jackies-drawing.html">Jackie’s Drawing</a></li>
-      <li><a href="/projects/i-just-want-to-be-super.html">I Just Want to be Super!</a></li>       
+      <li><a href="/projects/i-just-want-to-be-super.html">I Just Want to be Super!</a></li>
       <li><a href="/projects/everyday-walk.html">Everyday Walk</a></li>
       <li><a href="/projects/personal.html">Personal</a></li>
       <li><a href="/projects/pleinair.html">Plein Air</a></li>
@@ -143,6 +175,17 @@
           </form>
         </div>
 
+        <!-- PREVIEW (visible before password) -->
+        <div id="preview-wrap" class="preview-wrap">
+          <div class="preview-title">Preview</div>
+          <div class="preview-masonry" id="preview-masonry">
+            <!-- Pick 3 teaser images -->
+            <img src="../images/color-04.jpg" alt="Colourscript preview 1">
+            <img src="../images/Moomin_colorkey_306.jpg" alt="Colourscript preview 2">
+            <img src="../images/pleinair-1.jpg" alt="Colourscript preview 3">
+          </div>
+        </div>
+
         <!-- Protected content -->
         <div id="protected-content" class="hidden" oncontextmenu="return false;">
           <hr class="soft-divider" />
@@ -170,8 +213,8 @@
               <img src="../images/key-10.jpg" alt="Colour key" loading="lazy">
               <img src="../images/key-07.jpg" alt="Colour key" loading="lazy">
               <img src="../images/Moomin_colorkey_306.jpg" alt="Colour key" loading="lazy">
-              <img src="../images/Moomin_colorkey_308.jpg" alt="Colour key" loading="lazy">              
-              <img src="../images/Moomin_colorkey_MPandMMonboat.jpg" alt="Colour key" loading="lazy">              
+              <img src="../images/Moomin_colorkey_308.jpg" alt="Colour key" loading="lazy">
+              <img src="../images/Moomin_colorkey_MPandMMonboat.jpg" alt="Colour key" loading="lazy">
               <img src="../images/Moomin_colorkey_autumnfillyjonk.jpg" alt="Colour key" loading="lazy">
               <img src="../images/color-03.jpg" alt="Colour key" loading="lazy">
               <img src="../images/color-05.jpg" alt="Colour key" loading="lazy">
@@ -231,11 +274,9 @@
     /* ===== Password gate with SHA-256 (client-side) + cached auth =====
        Current password: "blueforest"
        sha256("blueforest") = e85a11225da830d3bf49fdb07f624f019ef138af9d21bbb2834c58dc59042255
-       Update PASSWORD_HASH_HEX if you change the password.
     */
     const PASSWORD_HASH_HEX = "e85a11225da830d3bf49fdb07f624f019ef138af9d21bbb2834c58dc59042255";
 
-    // Persist auth across refresh/site navigation (7 days)
     const AUTH_KEY = "sluz_auth_v1";
     const AUTH_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -268,9 +309,14 @@
 
     function unlock() {
       box.style.display = 'none';
+
+      const preview = document.getElementById('preview-wrap');
+      if (preview) preview.style.display = 'none';
+
       protectedContent.classList.remove('hidden');
       error.classList.add('hidden');
-      initLightbox();
+
+      wireProtectedLightboxClicks();
     }
 
     if (isAuthorized()) unlock();
@@ -290,41 +336,73 @@
       }
     });
 
-    /* ===== Lightbox ===== */
-    function initLightbox(){
-      const lb = document.getElementById('lightbox');
-      const lbImg = lb.querySelector('img');
-      const lbPrev = lb.querySelector('.lightbox-prev');
-      const lbNext = lb.querySelector('.lightbox-next');
+    /* ===== Shared Lightbox (Preview + Protected) ===== */
+    const lb    = document.getElementById('lightbox');
+    const lbImg = lb.querySelector('img');
+    const prev  = lb.querySelector('.lightbox-prev');
+    const next  = lb.querySelector('.lightbox-next');
 
+    let sources = [];
+    let i = 0;
+
+    function show(idx){
+      if (!sources.length) return;
+      i = (idx + sources.length) % sources.length;
+      lbImg.src = sources[i];
+    }
+
+    function openGallery(srcList, startSrc){
+      sources = srcList.slice();
+      const start = sources.indexOf(startSrc);
+      lb.classList.add('visible');
+      lb.setAttribute('aria-hidden','false');
+      show(start >= 0 ? start : 0);
+    }
+
+    function closeLB(){
+      lb.classList.remove('visible');
+      lb.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+    }
+
+    lb.addEventListener('click', closeLB);
+    lbImg.addEventListener('click', e => e.stopPropagation());
+    prev.addEventListener('click', e => { e.stopPropagation(); show(i - 1); });
+    next.addEventListener('click', e => { e.stopPropagation(); show(i + 1); });
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('visible')) return;
+      if (e.key === 'Escape') closeLB();
+      if (e.key === 'ArrowLeft') show(i - 1);
+      if (e.key === 'ArrowRight') show(i + 1);
+    });
+
+    // Wire PREVIEW clicks
+    function wirePreviewLightboxClicks(){
+      const previewImgs = Array.from(document.querySelectorAll('#preview-masonry img'));
+      if (!previewImgs.length) return;
+      const previewSources = previewImgs.map(img => img.src);
+
+      previewImgs.forEach(img => {
+        img.addEventListener('click', () => openGallery(previewSources, img.src));
+      });
+    }
+    wirePreviewLightboxClicks();
+
+    // Wire PROTECTED clicks (after unlock)
+    function wireProtectedLightboxClicks(){
       const imgs = Array.from(document.querySelectorAll('#protected-content .gallery img, #protected-content .masonry img'));
-      const sources = imgs.map(img => img.src);
-      let i = 0;
+      if (!imgs.length) return;
+      const protectedSources = imgs.map(img => img.src);
 
-      function show(idx){ i = (idx + sources.length) % sources.length; lbImg.src = sources[i]; }
-      function openFrom(src){
-        const start = sources.indexOf(src);
-        lb.classList.add('visible'); lb.setAttribute('aria-hidden','false');
-        show(start >= 0 ? start : 0);
-      }
-      function close(){ lb.classList.remove('visible'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
-
-      imgs.forEach(img => img.addEventListener('click', () => openFrom(img.src), { passive:true }));
-      lb.addEventListener('click', close);
-      lbImg.addEventListener('click', e => e.stopPropagation());
-      lbPrev.addEventListener('click', e => { e.stopPropagation(); show(i-1); });
-      lbNext.addEventListener('click', e => { e.stopPropagation(); show(i+1); });
-
-      document.addEventListener('keydown', e => {
-        if (!lb.classList.contains('visible')) return;
-        if (e.key === 'Escape') close();
-        if (e.key === 'ArrowLeft') show(i-1);
-        if (e.key === 'ArrowRight') show(i+1);
+      imgs.forEach(img => {
+        img.addEventListener('click', () => openGallery(protectedSources, img.src));
       });
     }
 
+    // If loaded with content already visible (dev preview)
     if (!protectedContent.classList.contains('hidden')) {
-      initLightbox();
+      wireProtectedLightboxClicks();
     }
   </script>
 </body>
