@@ -778,3 +778,14 @@ a:hover {
 </script>
 
 a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+.newsletter-embed {
+  max-width: 480px;
+  margin: 24px 0 12px;
+}
+
+.newsletter-embed iframe {
+  width: 100%;
+  height: 120px;
+  background: transparent;
+}
