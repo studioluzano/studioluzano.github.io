@@ -779,31 +779,18 @@ a:hover {
 
 a:hover { text-decoration: underline; text-underline-offset: 2px; }
 
-/* ===== Newsletter embed (Google Form) ===== */
+/* ===== Newsletter embed (Substack) ===== */
 .newsletter-embed{
-  max-width: 560px;
+  max-width: 420px;
   margin: 14px 0 8px;
-  overflow: hidden;        /* IMPORTANT: this is what crops the top */
-  border-radius: 10px;
 }
 
-/* Crop the Google Forms header/title */
 .newsletter-embed iframe{
+  display: block;
   width: 100%;
-  height: 560px;           /* adjust if the bottom gets cut off */
+  height: 150px;     /* Substack’s embed height */
   border: 0;
   background: transparent;
-  display: block;
-
-  margin-top: -170px;      /* adjust this to hide more/less header */
-}
-
-/* Mobile tweak */
-@media (max-width: 640px){
-  .newsletter-embed iframe{
-    margin-top: -150px;
-    height: 620px;
-  }
 }
 
 .newsletter-note{
