@@ -812,3 +812,18 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
   background: transparent !important;
   display: block;
 }
+/* ===== Newsletter (Substack) ===== */
+.newsletter-substack{
+  max-width: 480px;
+  margin: 14px 0 8px;
+  overflow: hidden;      /* enables cropping */
+  height: 88px;          /* <-- this hides the disclaimer line */
+  border-radius: 10px;   /* optional */
+}
+
+.newsletter-substack iframe{
+  width: 100%;
+  height: 150px;         /* keep iframe tall, container crops it */
+  border: 0 !important;
+  display: block;
+}
