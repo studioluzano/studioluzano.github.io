@@ -779,53 +779,35 @@ a:hover {
 
 a:hover { text-decoration: underline; text-underline-offset: 2px; }
 
-.newsletter-embed{
-  max-width: 520px;
-  margin: 14px 0 8px 0;
-}
-
-.newsletter-embed iframe{
-  width: 100%;
-  height: 230px;            /* adjust after you see it */
-  border: 0;
-  background: transparent;
-}
-
-.newsletter-note{
-  font-size: 0.9rem;
-  color: #777;
-  margin-top: 6px;
-}
-
-/* Newsletter embed: make it feel like part of the site */
+/* ===== Newsletter embed (Google Form) ===== */
 .newsletter-embed{
   max-width: 560px;
   margin: 14px 0 8px;
-  overflow: hidden;           /* this is what "crops" */
+  overflow: hidden;        /* IMPORTANT: this is what crops the top */
   border-radius: 10px;
 }
 
-/* The "crop" trick */
+/* Crop the Google Forms header/title */
 .newsletter-embed iframe{
   width: 100%;
-  height: 520px;              /* adjust after you see it */
+  height: 560px;           /* adjust if the bottom gets cut off */
   border: 0;
   background: transparent;
+  display: block;
 
-  /* Hide the Google header/title area */
-  margin-top: -140px;         /* move form up */
+  margin-top: -170px;      /* adjust this to hide more/less header */
 }
 
-/* On small screens, adjust the crop a bit */
+/* Mobile tweak */
 @media (max-width: 640px){
   .newsletter-embed iframe{
-    margin-top: -120px;
-    height: 560px;
+    margin-top: -150px;
+    height: 620px;
   }
 }
 
 .newsletter-note{
   font-size: .9rem;
-  color: #777;
+  color:#777;
   margin-top: 6px;
 }
