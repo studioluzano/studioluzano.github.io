@@ -108,12 +108,25 @@
   </p>
 
   <div class="newsletter-embed">
-    <iframe
-      src="https://studioluzano.substack.com/embed"
-      title="Subscribe to Studio Luzano newsletter"
-      frameborder="0"
-      scrolling="no">
-    </iframe>
+    <form
+  action="https://studioluzano.substack.com/api/v1/free"
+  method="post"
+  target="_blank"
+  class="newsletter-form"
+>
+  <input
+    type="email"
+    name="email"
+    placeholder="Your email"
+    required
+    class="newsletter-input"
+  >
+  <button type="submit" class="newsletter-button">
+    Subscribe
+  </button>
+</form>
+
+<p class="newsletter-note">No spam. Unsubscribe anytime.</p>
   </div>
 </section>
 
