@@ -791,3 +791,9 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
   border-radius: 10px;     /* softer edges */
   overflow: hidden;        /* keeps the radius clean */
 }
+
+.newsletter-substack {
+  max-width: 480px;
+  margin: 24px auto 12px;
+}
+
