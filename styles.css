@@ -827,3 +827,19 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
   border: 0 !important;
   display: block;
 }
+
+/* ===== Newsletter (Substack) – crop out disclaimer ===== */
+.newsletter-substack{
+  max-width: 520px;
+  margin: 14px 0 8px;
+  overflow: hidden;
+  height: 74px;          /* <-- this is the crop. try 68–82px */
+  border-radius: 10px;
+}
+
+.newsletter-substack iframe{
+  width: 100%;
+  height: 150px;         /* Substack’s embed height */
+  border: 0 !important;
+  display: block;
+}
