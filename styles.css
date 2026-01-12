@@ -798,3 +798,17 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
   color:#777;
   margin-top: 6px;
 }
+
+.newsletter-substack {
+  max-width: 480px;
+  margin: 14px 0 8px;
+  overflow: hidden;        /* allows cropping */
+}
+
+.newsletter-substack iframe {
+  width: 100% !important;
+  height: 120px !important;  /* smaller height */
+  border: 0 !important;
+  background: transparent !important;
+  display: block;
+}
