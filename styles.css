@@ -797,3 +797,11 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
   margin: 24px auto 12px;
 }
 
+.learning-list {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+}
+
+.learning-list li {
+  margin-bottom: 0.4rem;
+}
