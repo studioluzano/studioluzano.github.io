@@ -805,3 +805,15 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
 .learning-list li {
   margin-bottom: 0.4rem;
 }
+
+.about-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.learning-list {
+  max-width: 520px;
+  margin: 0 auto 2rem auto;
+  text-align: left;
+}
