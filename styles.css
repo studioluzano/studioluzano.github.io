@@ -106,6 +106,29 @@ a:hover {
   margin: 0 6px;
 }
 
+/* 1) Tagline: slightly tighter to the logo, but with a clear bottom edge */
+.tagline{
+  margin-top: 6px;
+  margin-bottom: 6px; /* was 6px in your file — keep or set explicitly */
+}
+
+/* 2) Contact line: smaller + closer to tagline, but not crowding nav */
+.contact-inline{
+  margin-top: 2px;
+  margin-bottom: 14px; /* THIS creates the separation before the nav */
+  font-size: 0.85rem;  /* slightly smaller than tagline */
+  line-height: 1.2;
+  color: #7a746a;
+  text-align: center;
+}
+
+/* 3) Nav: don’t add extra top margin now that contact has bottom margin */
+.section-nav{
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+
 /* ------------------------------
    DROPDOWN MENU
 ------------------------------ */
