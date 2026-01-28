@@ -86,6 +86,25 @@ a:hover {
   margin-top: 2px;
   margin-bottom: 6px;
 }
+.contact-inline {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #7a746a; /* soft warm grey */
+  text-align: center;
+}
+
+.contact-inline a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-inline a:hover {
+  text-decoration: underline;
+}
+
+.contact-inline .dot {
+  margin: 0 6px;
+}
 
 /* ------------------------------
    DROPDOWN MENU
