@@ -9,15 +9,35 @@
   <link rel="stylesheet" href="../styles.css">
 
   <style>
-    .agent-list {
-      margin-top: 10px;
+    .thankyou {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .discount-code {
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      margin: 1.2rem 0;
+      font-weight: 500;
+    }
+
+    .shop-links {
+      margin-top: 1.5rem;
       line-height: 1.8;
     }
-    .agent-list p { margin: 0; }
-    .agent-name { font-weight: 500; color: #5E6B54; }
-    .agent-email a { color: inherit; text-decoration: none; }
-    .agent-email a:hover { text-decoration: underline; }
 
+    .shop-links a {
+      text-decoration: none;
+    }
+
+    .shop-links a:hover {
+      text-decoration: underline;
+    }
+
+    .signature {
+      margin-top: 2rem;
+      font-style: italic;
+    }
   </style>
 </head>
 
@@ -36,44 +56,46 @@
       </a>
 
       <p class="tagline">Illustrator · Concept Artist</p>
+    </header>
 
     <main>
       <section class="text-section">
         <h2>About</h2>
 
         <p>
-         Hi! As a small thank-you for being on this list,
-here’s a 25% code you can use:
-
-Prints:
-https://www.inprnt.com/profile/studioluzano/
-
-Originals:
-https://holvi.com/shop/studioluzano/
-
-Best,
-Antonio
+          Hi! and thanks for being here.
         </p>
 
         <p>
-          STUDIO25
+          As a small thank-you for being on this list, here’s a 25% discount you can use on prints and original work.
         </p>
 
-        <p>
-          Prints:
-https://www.inprnt.com/profile/studioluzano/
-        </p>
+        <div class="thankyou">
+          <div class="discount-code">GN824F6</div>
 
-          <p>
-            Originals:
-https://holvi.com/shop/studioluzano/
-         </p>         
+          <div class="shop-links">
+            <p>
+              <strong>Prints</strong><br>
+              <a href="https://www.inprnt.com/profile/studioluzano/" target="_blank" rel="noopener">
+                inprnt.com/profile/studioluzano
+              </a>
+            </p>
 
-          <p>
-            -Antonio
-         </p>                 
+            <p>
+              <strong>Originals</strong><br>
+              <a href="https://holvi.com/shop/studioluzano/" target="_blank" rel="noopener">
+                holvi.com/shop/studioluzano
+              </a>
+            </p>
+          </div>
+
+          <p class="signature">
+            — Antonio
+          </p>
+        </div>
       </section>
+    </main>
 
-  
+  </div>
 </body>
 </html>
