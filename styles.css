@@ -641,6 +641,21 @@ a:hover {
   color: #8B775A;
 }
 
+/* Poster in place of intro text */
+.poster-hero{
+  max-width: 520px;   /* tweak 480–640 depending on how big you want it */
+  margin: 0 auto 18px;
+}
+
+.poster-hero img{
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #FFFDFC;
+  border: 1px solid #d7d3c4;
+  padding: 10px;
+}
+
 /* ------------------------------
    ABOUT PAGE IMPROVEMENTS
 ------------------------------ */
