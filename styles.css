@@ -656,6 +656,18 @@ a:hover {
   padding: 10px;
 }
 
+.poster-link{
+  display: block;
+  cursor: zoom-in;
+}
+
+.poster-link img{
+  transition: transform 0.25s ease;
+}
+
+.poster-link:hover img{
+  transform: scale(1.015);
+}
 /* ------------------------------
    ABOUT PAGE IMPROVEMENTS
 ------------------------------ */
