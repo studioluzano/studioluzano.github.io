@@ -1,1 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monsieur Henri — Studio Luzano</title>
+    <style>
+        :root {
+            --bg-color: #fcfbf9;
+            --text-color: #222222;
+            --muted-color: #666666;
+            --border-color: #e0deda;
+        }
 
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header & Navigation */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .profile-avatar img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin: 5px 0 15px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .site-title a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--muted-color);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--muted-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--text-color);
+        }
+
+        /* Centered Project Header */
+        .project-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .project-header h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        /* Text Section */
+        .project-text {
+            max-width: 700px;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--muted-color);
+            margin: 0 auto 50px auto;
+        }
+
+        /* Gallery Grids */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-init: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gallery-item {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #f0eee9;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Section Spacing Divider */
+        .section-spacer {
+            width: 100%;
+            max-width: 1000px;
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 10px auto 60px auto;
+        }
+
+        /* Social Media Text Buttons Footer */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--muted-color);
+            border-bottom-color: var(--muted-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="profile-avatar">
+            <!-- Update the image source path as needed relative to your folder structure -->
+            <a href="../index.html"><img src="../images/avatar.jpg" alt="Antonio Luzano"></a>
+        </div>
+        <div class="site-title">
+            <a href="../index.html">Antonio Luzano</a>
+        </div>
+        <nav>
+            <a href="../index.html">Illustrator</a>
+            <a href="concept-art.html">Animation</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <!-- Centered Project Header -->
+    <div class="project-header">
+        <h1>Monsieur Henri</h1>
+    </div>
+
+    <!-- Text Space under Header -->
+    <div class="project-text">
+        <p>An ongoing visual series and character study observing Monsieur Henri—a quiet, observant penguin navigating daily routines, solitary moments, and subtle architectural spaces.</p>
+    </div>
+
+    <!-- FIRST GALLERY GRID -->
+    <div class="gallery-grid">
+        <!-- Replace src values with your uploaded image paths -->
+        <div class="gallery-item">
+            <img src="../images/monsieur-henri-1.jpg" alt="Monsieur Henri illustration">
+        </div>
+        <div class="gallery-item">
+            <img src="../images/monsieur-henri-2.jpg" alt="Monsieur Henri illustration">
+        </div>
+        <div class="gallery-item">
+            <img src="../images/monsieur-henri-3.jpg" alt="Monsieur Henri illustration">
+        </div>
+    </div>
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- SECOND GALLERY GRID -->
+    <div class="gallery-grid">
+        <!-- Replace src values with your uploaded image paths -->
+        <div class="gallery-item">
+            <img src="../images/monsieur-henri-4.jpg" alt="Monsieur Henri illustration">
+        </div>
+        <div class="gallery-item">
+            <img src="../images/monsieur-henri-5.jpg" alt="Monsieur Henri illustration">
+        </div>
+        <div class="gallery-item">
+            <img src="../images/monsieur-henri-6.jpg" alt="Monsieur Henri illustration">
+        </div>
+    </div>
+
+    <!-- Footer with Text-based Social Links -->
+    <footer>
+        <div class="social-links">
+            <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://studioluzano.com" target="_blank" rel="noopener">Shop</a>
+            <a href="mailto:your-email@example.com">Email</a>
+        </div>
+    </footer>
+
+</body>
+</html>
