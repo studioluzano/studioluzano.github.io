@@ -1,251 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monsieur Henri — Studio Luzano</title>
-    <style>
-        :root {
-            --bg-color: #fcfbf9;
-            --text-color: #222222;
-            --muted-color: #666666;
-            --border-color: #e0deda;
-        }
+  <meta charset="UTF-8" />
+  <title>Monsieur Henri – Antonio Luzano</title>
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Monsieur Henri – Illustration and character series by Antonio Luzano." />
 
-        /* Header & Navigation */
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            width: 100%;
-            max-width: 900px;
-        }
+  <!-- Fonts & styles (stepping up one directory from /projects/) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=8" />
 
-        .profile-avatar img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
+  <!-- Favicon / metadata -->
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#F4F2EC">
 
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: normal;
-            margin: 5px 0 15px 0;
-            letter-spacing: 0.5px;
-        }
+  <meta property="og:title" content="Monsieur Henri – Antonio Luzano">
+  <meta property="og:description" content="Monsieur Henri – Illustration and character series by Antonio Luzano.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://antonioluzano.com/projects/monsieurhenri.html">
+  <meta property="og:image" content="https://antonioluzano.com/images/og-cover.jpg">
 
-        .site-title a {
-            color: var(--text-color);
-            text-decoration: none;
-        }
+  <!-- Page-specific: Project Layout, Masonry Grids & Text Social Links -->
+  <style>
+    .page { max-width: 1320px; }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-size: 0.9rem;
-            color: var(--muted-color);
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
+    /* Centered Project Header & Intro Text */
+    .project-intro {
+      text-align: center;
+      max-width: 680px;
+      margin: 24px auto 44px;
+      padding: 0 16px;
+    }
 
-        nav a {
-            color: var(--muted-color);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+    .project-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.1rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      margin: 0 0 14px;
+    }
 
-        nav a:hover {
-            color: var(--text-color);
-        }
+    .project-description {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      line-height: 1.65;
+      margin: 0;
+      opacity: 0.85;
+    }
 
-        /* Centered Project Header */
-        .project-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    /* Masonry layout matching index.html */
+    .masonry {
+      column-width: 320px;
+      column-gap: 18px;
+      padding: 8px;
+    }
+    @media (max-width: 1200px) { .masonry { column-width: 280px; } }
+    @media (max-width: 900px)  { .masonry { column-width: 240px; } }
+    @media (max-width: 640px)  { .masonry { column-width: 100%; } }
 
-        .project-header h1 {
-            font-size: 2rem;
-            font-weight: 400;
-            margin: 0;
-            letter-spacing: 0.5px;
-        }
+    .masonry img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 0 18px;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      background: #f3f0e8;
+      cursor: zoom-in;
+      transition: transform 0.25s ease;
+    }
 
-        /* Text Section */
-        .project-text {
-            max-width: 700px;
-            text-align: center;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--muted-color);
-            margin: 0 auto 50px auto;
-        }
+    .masonry img:hover {
+      transform: scale(1.02);
+    }
 
-        /* Gallery Grids */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            width: 100%;
-            max-width: 1000px;
-            margin-bottom: 50px;
-        }
+    /* Space between the two gallery grids */
+    .gallery-spacer {
+      height: 64px;
+    }
 
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-init: repeat(2, 1fr);
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+    /* Text-based Social Links at the bottom */
+    .project-socials {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 56px 0 24px;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+    }
 
-        @media (max-width: 480px) {
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    .project-socials a {
+      text-decoration: none;
+      color: inherit;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: opacity 0.2s ease, border-color 0.2s ease;
+    }
 
-        .gallery-item {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background-color: #f0eee9;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .project-socials a:hover {
+      opacity: 0.7;
+      border-bottom-color: currentColor;
+    }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item img:hover {
-            transform: scale(1.02);
-        }
-
-        /* Section Spacing Divider */
-        .section-spacer {
-            width: 100%;
-            max-width: 1000px;
-            height: 1px;
-            background-color: var(--border-color);
-            margin: 10px auto 60px auto;
-        }
-
-        /* Social Media Text Buttons Footer */
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            width: 100%;
-            padding-bottom: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            font-size: 0.95rem;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            padding-bottom: 2px;
-            transition: border-color 0.2s, color 0.2s;
-        }
-
-        .social-links a:hover {
-            color: var(--muted-color);
-            border-bottom-color: var(--muted-color);
-        }
-    </style>
+    /* Lightbox overlay */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.9);
+      z-index: 2000;
+    }
+    .lightbox-overlay.visible { display: flex; }
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      cursor: zoom-out;
+    }
+  </style>
 </head>
-<body>
 
-    <!-- Header & Navigation -->
-    <header>
-        <div class="profile-avatar">
-            <!-- Update the image source path as needed relative to your folder structure -->
-            <a href="../index.html"><img src="../images/avatar.jpg" alt="Antonio Luzano"></a>
-        </div>
-        <div class="site-title">
-            <a href="../index.html">Antonio Luzano</a>
-        </div>
-        <nav>
-            <a href="../index.html">Illustrator</a>
-            <a href="concept-art.html">Animation</a>
-            <a href="shop.html">Shop</a>
-            <a href="about.html">About</a>
-        </nav>
+<body>
+  <div class="page">
+    <!-- HEADER (Identical to index.html, paths adjusted for /projects/) -->
+    <header class="site-header">
+      <a href="../index.html" class="avatar-wrapper">
+        <img src="../images/WhatsApp Image 2026-05-20 at 18.13.08.jpeg" alt="Portrait of Antonio Luzano" class="avatar">
+      </a>
+
+      <h1 class="site-title">
+        <a href="../index.html">
+          <img src="../images/logo-name.png" alt="Antonio Luzano" class="name-logo">
+        </a>
+      </h1>
+
+      <p class="identity-line">
+        <span class="role">illustrator</span>
+        <span class="dot">·</span>
+        <a href="mailto:antonioluzano@gmail.com">antonioluzano@gmail.com</a>
+        <span class="dot">·</span>
+        <a href="tel:+358414846365">+358&nbsp;41&nbsp;484&nbsp;6365</a>
+      </p>
+
+      <nav class="section-nav">
+        <ul class="menu">
+          <li class="menu-item has-dropdown">
+            <a href="#">Illustration</a>
+            <ul class="dropdown">
+              <li><a href="/projects/run.html">RUN</a></li>
+              <li><a href="/projects/jackies-drawing.html">Jackie’s Drawing</a></li>
+              <li><a href="/projects/i-just-want-to-be-super.html">I Just Want to be Super!</a></li>
+              <li><a href="/projects/everyday-walk.html">Everyday Walk</a></li>
+              <li><a href="/projects/personal.html">Personal</a></li>
+              <li><a href="/projects/pleinair.html">Plein Air</a></li>
+            </ul>
+          </li>
+          <li class="menu-item has-dropdown">
+            <a href="#">Animation</a>
+            <ul class="dropdown">
+              <li><a href="/projects/concept-art.html">Concept Art</a></li>
+              <li><a href="/projects/colourscript.html">Colourscript</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="/projects/monsieurhenri.html">Monsieur Henri</a></li>
+          <li class="menu-item"><a href="https://studioluzano.com/" target="_blank" rel="noopener">Shop</a></li>
+          <li class="menu-item"><a href="/projects/about.html">About</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <!-- Centered Project Header -->
-    <div class="project-header">
-        <h1>Monsieur Henri</h1>
-    </div>
+    <!-- MAIN -->
+    <main>
+      <!-- CENTERED HEADER & DESCRIPTION SPACE -->
+      <section class="project-intro">
+        <h2 class="project-title">Monsieur Henri</h2>
+        <p class="project-description">
+          Write your project description, story, or notes about Monsieur Henri right here.
+        </p>
+      </section>
 
-    <!-- Text Space under Header -->
-    <div class="project-text">
-        <p>An ongoing visual series and character study observing Monsieur Henri—a quiet, observant penguin navigating daily routines, solitary moments, and subtle architectural spaces.</p>
-    </div>
+      <!-- GALLERY GRID 1 -->
+      <section class="masonry">
+        <!-- Replace with your uploaded Monsieur Henri image filenames -->
+        <img src="../images/monsieur-henri-01.jpg" alt="Monsieur Henri" loading="lazy">
+        <img src="../images/monsieur-henri-02.jpg" alt="Monsieur Henri" loading="lazy">
+        <img src="../images/monsieur-henri-03.jpg" alt="Monsieur Henri" loading="lazy">
+      </section>
 
-    <!-- FIRST GALLERY GRID -->
-    <div class="gallery-grid">
-        <!-- Replace src values with your uploaded image paths -->
-        <div class="gallery-item">
-            <img src="../images/monsieur-henri-1.jpg" alt="Monsieur Henri illustration">
-        </div>
-        <div class="gallery-item">
-            <img src="../images/monsieur-henri-2.jpg" alt="Monsieur Henri illustration">
-        </div>
-        <div class="gallery-item">
-            <img src="../images/monsieur-henri-3.jpg" alt="Monsieur Henri illustration">
-        </div>
-    </div>
+      <!-- SPACE BETWEEN GRIDS -->
+      <div class="gallery-spacer"></div>
 
-    <!-- Section Spacer -->
-    <div class="section-spacer"></div>
+      <!-- GALLERY GRID 2 -->
+      <section class="masonry">
+        <!-- Replace with your second batch of Monsieur Henri image filenames -->
+        <img src="../images/monsieur-henri-04.jpg" alt="Monsieur Henri" loading="lazy">
+        <img src="../images/monsieur-henri-05.jpg" alt="Monsieur Henri" loading="lazy">
+        <img src="../images/monsieur-henri-06.jpg" alt="Monsieur Henri" loading="lazy">
+      </section>
 
-    <!-- SECOND GALLERY GRID -->
-    <div class="gallery-grid">
-        <!-- Replace src values with your uploaded image paths -->
-        <div class="gallery-item">
-            <img src="../images/monsieur-henri-4.jpg" alt="Monsieur Henri illustration">
-        </div>
-        <div class="gallery-item">
-            <img src="../images/monsieur-henri-5.jpg" alt="Monsieur Henri illustration">
-        </div>
-        <div class="gallery-item">
-            <img src="../images/monsieur-henri-6.jpg" alt="Monsieur Henri illustration">
-        </div>
-    </div>
+      <!-- TEXT-BASED SOCIAL MEDIA BUTTONS -->
+      <div class="project-socials">
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
+        <a href="https://studioluzano.com/" target="_blank" rel="noopener">Shop</a>
+      </div>
 
-    <!-- Footer with Text-based Social Links -->
-    <footer>
-        <div class="social-links">
-            <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-            <a href="https://studioluzano.com" target="_blank" rel="noopener">Shop</a>
-            <a href="mailto:your-email@example.com">Email</a>
-        </div>
+      <!-- LIGHTBOX (Works on both grids) -->
+      <div id="lightbox" class="lightbox-overlay" aria-hidden="true">
+        <img src="" alt="">
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Antonio Luzano. All rights reserved.</p>
     </footer>
+  </div>
 
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightbox on click for all .masonry galleries
+    const galleries = document.querySelectorAll('.masonry');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = lightbox.querySelector('img');
+
+    galleries.forEach(gallery => {
+      gallery.addEventListener('click', e => {
+        if (e.target.tagName !== 'IMG') return;
+        lbImg.src = e.target.src;
+        lightbox.classList.add('visible');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('visible');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+    });
+  </script>
 </body>
 </html>
